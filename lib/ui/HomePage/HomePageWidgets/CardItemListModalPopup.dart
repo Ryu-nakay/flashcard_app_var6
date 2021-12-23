@@ -2,6 +2,7 @@ import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/ui/MakeAndEditPage/MakeAndEditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList item){
   return showCupertinoModalPopup(
@@ -9,17 +10,20 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
           builder: (BuildContext context)=>CupertinoActionSheet(
             title: Text('操作を選択',style: TextStyle(fontSize: size.width*0.04)),
             actions: [
-              CupertinoActionSheetAction(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(item)));
-                }, 
-                child: Text(
-                  '暗記カードを編集',
-                  style: TextStyle(
-                    color: Colors.blue
-                  ),
-                )
-              ),
+              Consumer<CardListModel>(builder: (context, card_list_model, child) {
+                return CupertinoActionSheetAction(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(card_list_model.list.indexOf(item))));
+                  }, 
+                  child: Text(
+                    '暗記カードを編集',
+                    style: TextStyle(
+                      color: Colors.blue
+                    ),
+                  )
+                );
+              }),
+              
               CupertinoActionSheetAction(
                 onPressed:(){
                   /*
@@ -48,4 +52,6 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
             ),
           )
         );
+
+
 }

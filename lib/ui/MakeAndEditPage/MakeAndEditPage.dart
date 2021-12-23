@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MakeAndEditPage extends StatelessWidget{
-  CardList item;
+  int inputItemIndex;
 
-  MakeAndEditPage(this.item);
+  MakeAndEditPage(this.inputItemIndex);
 
   @override
   Widget build(BuildContext context){
@@ -26,103 +26,106 @@ class MakeAndEditPage extends StatelessWidget{
           ),
         ),
       ),
-      body: Container(
-        height: size.height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width:size.width ,
-                child: Row(
-                  children: [
-                    Text(
-                      '名前：',
-                      style: TextStyle(
-                        fontSize: size.width*0.03
-                      ),
-                    ),
-                    Flexible(
-                      child: TextFormField(
-                        cursorColor: Provider.of<ColorModel>(context).textColor,
-                        decoration: InputDecoration(
-                          enabledBorder:OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Provider.of<ColorModel>(context).textColor
-                            )
-                          ),
-                          focusedBorder:OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Provider.of<ColorModel>(context).textColor,
-                              width: 2
-                            )
-                          ),
-                          border: OutlineInputBorder(),
-                          hintText: '暗記カード名を入力',
-                          contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
+      body: Consumer<CardListModel>(builder: (context, card_list_model, child) {
+        return Container(
+          height: size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width:size.width ,
+                  child: Row(
+                    children: [
+                      Text(
+                        '名前：',
+                        style: TextStyle(
+                          fontSize: size.width*0.03
                         ),
-                        onChanged: (value){
-                          
-                        },
                       ),
-                    ),
-                  ],
-                ),
-              ),
-        
-              Consumer<MakeAndEditModel>(builder: (context, make_and_edit_model, child) {
-                return Column(
-                  children: [
-                    Container(
-                      height: size.height*0.45,
-                      child: PageView(
-                        controller:make_and_edit_model.cardPageController,
-                        children: [
-                          for (var i = 0; i < item.cards.length; i++)
-                            InputCard(size, context),
-                        ],
-                        onPageChanged: (int page){
-                          make_and_edit_model.changePageIndex(page);
-                        },
-                      ),
-                    ),
-
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            onPressed:
-                            make_and_edit_model.cardPageIndex==0?
-                            null:
-                            (){
-                              make_and_edit_model.previousPage();
-                            },
-                            child: Icon(Icons.arrow_back_ios)
+                      Flexible(
+                        child: TextFormField(
+                          cursorColor: Provider.of<ColorModel>(context).textColor,
+                          decoration: InputDecoration(
+                            enabledBorder:OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Provider.of<ColorModel>(context).textColor
+                              )
+                            ),
+                            focusedBorder:OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Provider.of<ColorModel>(context).textColor,
+                                width: 2
+                              )
+                            ),
+                            border: OutlineInputBorder(),
+                            hintText: '暗記カード名を入力',
+                            contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                           ),
-                          Text('${make_and_edit_model.cardPageIndex+1}/${item.cards.length}'),
-                          ElevatedButton(
-                            onPressed:
-                            make_and_edit_model.cardPageIndex==item.cards.length-1?
-                            null:
-                            (){
-                              make_and_edit_model.nextPage();
-                            },
-                            child: make_and_edit_model.cardPageIndex==item.cards.length-1?
-                            Icon(Icons.add)
-                            :Icon(Icons.arrow_forward_ios)
-                          )
-                        ],
+                          controller: TextEditingController(text: card_list_model.list[inputItemIndex].name),
+                          onChanged: (value){
+                            
+                          },
+                        ),
                       ),
-                    )
-                  ],
-                );
-              })
-              
-              
-            ],
+                    ],
+                  ),
+                ),
+          
+                Consumer<MakeAndEditModel>(builder: (context, make_and_edit_model, child) {
+                  return Column(
+                    children: [
+                      Container(
+                        height: size.height*0.45,
+                        child: PageView(
+                          controller:make_and_edit_model.cardPageController,
+                          children: [
+                            for (var i = 0; i < card_list_model.list[inputItemIndex].cards.length; i++)
+                              InputCard(size, context,inputItemIndex,i),
+                          ],
+                          onPageChanged: (int page){
+                            make_and_edit_model.changePageIndex(page);
+                          },
+                        ),
+                      ),
+
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed:
+                              make_and_edit_model.cardPageIndex==0?
+                              null:
+                              (){
+                                make_and_edit_model.previousPage();
+                              },
+                              child: Icon(Icons.arrow_back_ios)
+                            ),
+                            Text('${make_and_edit_model.cardPageIndex+1}/${card_list_model.list[inputItemIndex].cards.length}'),
+                            ElevatedButton(
+                              onPressed:
+                              make_and_edit_model.cardPageIndex==card_list_model.list[inputItemIndex].cards.length-1?
+                              (){}:
+                              (){
+                                make_and_edit_model.nextPage();
+                              },
+                              child: make_and_edit_model.cardPageIndex==card_list_model.list[inputItemIndex].cards.length-1?
+                              Icon(Icons.add)
+                              :Icon(Icons.arrow_forward_ios)
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                })
+                
+                
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      })
     );
   }
 }
