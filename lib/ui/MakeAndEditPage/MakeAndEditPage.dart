@@ -1,3 +1,4 @@
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
@@ -33,7 +34,7 @@ class MakeAndEditPage extends StatelessWidget{
             child: Column(
               children: [
                 Container(
-                  width:size.width ,
+                  width:size.width*0.9 ,
                   child: Row(
                     children: [
                       Text(
@@ -75,8 +76,8 @@ class MakeAndEditPage extends StatelessWidget{
                   return Column(
                     children: [
                       Container(
-                        height: size.height*0.45,
-                        child: PageView(
+                        width: size.width*0.9,
+                        child: ExpandablePageView(
                           controller:make_and_edit_model.cardPageController,
                           children: [
                             for (var i = 0; i < card_list_model.list[inputItemIndex].cards.length; i++)

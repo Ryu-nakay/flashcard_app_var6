@@ -39,6 +39,7 @@ dependencies:
   universal_html: ^1.2.1
   provider: ^6.0.1
   flip_card: ^0.6.0
+  expandable_page_view: ^1.0.9
 
 
 dev_dependencies:

@@ -50,7 +50,7 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                       ),
                       controller: TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].front),
                       onChanged: (value){
-                        
+                        card_list_model.list[inputItemIndex].cards[cardIndex].front=value;
                       },
                     ),
                   ),
@@ -87,7 +87,7 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                       ),
                       controller:  TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].frontMemo),
                       onChanged: (value){
-                        
+                        card_list_model.list[inputItemIndex].cards[cardIndex].frontMemo=value;
                       },
                     ),
                   ),
@@ -139,7 +139,7 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                       ),
                       controller:  TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].back),
                       onChanged: (value){
-                        
+                        card_list_model.list[inputItemIndex].cards[cardIndex].back=value;
                       },
                     ),
                   ),
@@ -176,7 +176,7 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                       ),
                       controller:  TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].backMemo),
                       onChanged: (value){
-                        
+                        card_list_model.list[inputItemIndex].cards[cardIndex].backMemo=value;
                       },
                     ),
                   ),

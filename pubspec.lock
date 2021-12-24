@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  expandable_page_view:
+    dependency: "direct main"
+    description:
+      name: expandable_page_view
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.9"
   fake_async:
     dependency: transitive
     description:
@@ -249,4 +256,4 @@ packages:
     version: "0.1.2"
 sdks:
   dart: ">=2.15.0 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.17.0"
