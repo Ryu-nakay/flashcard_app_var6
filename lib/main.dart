@@ -2,6 +2,7 @@ import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/homeNavbarModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
+import 'package:flashcard_app_ver6/model/playModel.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +29,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => MakeAndEditModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PlayModel(),
         ),
       ],
       child: MyApp()

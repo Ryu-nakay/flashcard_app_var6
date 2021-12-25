@@ -1,6 +1,7 @@
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/CardItemListModalPopup.dart';
+import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/PlayModal.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,9 @@ Widget CardItemList(Size size,CardList item,BuildContext context){
       borderRadius: BorderRadius.circular(10),
     ),
     child:ListTile(
+      onTap: (){
+        PlaypModal(context, size, item);
+      },
       leading: Icon(
         Icons.circle,
         color:Provider.of<ColorModel>(context).bodyColor1 ,

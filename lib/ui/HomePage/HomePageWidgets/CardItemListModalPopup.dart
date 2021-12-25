@@ -13,6 +13,7 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
               Consumer<CardListModel>(builder: (context, card_list_model, child) {
                 return CupertinoActionSheetAction(
                   onPressed: (){
+                    Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(card_list_model.list.indexOf(item))));
                   }, 
                   child: Text(
