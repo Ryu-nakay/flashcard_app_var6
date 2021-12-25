@@ -21,6 +21,12 @@ class CardListModel extends ChangeNotifier{
     this.list[inputItemIndex].cards.add(CardData(id:maxID+1, front: '', frontMemo: '', back:'', backMemo: '', evaluation: ''));
     notifyListeners();
   }
+
+  void changeCardEvaluation(String newStatus,int inputItemIndex,int inputCardIndex){
+    this.list[inputItemIndex].cards[inputCardIndex].evaluation=newStatus;
+    notifyListeners();
+  }
+
 }
 
 //1件の単語帳データクラス

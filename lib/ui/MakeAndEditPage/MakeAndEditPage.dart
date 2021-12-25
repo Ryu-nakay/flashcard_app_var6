@@ -92,7 +92,7 @@ class MakeAndEditPage extends StatelessWidget{
                             },
                           ),
                         ),
-    
+
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

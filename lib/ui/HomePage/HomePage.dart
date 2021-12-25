@@ -3,6 +3,7 @@ import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/homeNavbarModel.dart';
 import 'package:flashcard_app_ver6/ui/AboutAppPage/AboutAppPage.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/CardItemList.dart';
+import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/MakeCardListModalPopup.dart';
 import 'package:flashcard_app_ver6/ui/MyPage/MyPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ class HomePage extends StatelessWidget{
             backgroundColor: Provider.of<ColorModel>(context).textColor,
             foregroundColor: Provider.of<ColorModel>(context).bodyColor1,
             onPressed: () {
-            
+              MakeCardListModalPopup(context, size);
             },
             child: Icon(Icons.add),
           ),

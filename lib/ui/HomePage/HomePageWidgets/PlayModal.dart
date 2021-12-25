@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/playModel.dart';
@@ -5,6 +7,19 @@ import 'package:flashcard_app_ver6/ui/PlayPage/PlayPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+List<int> shuffle(List<int> items) {
+    var random = new Random();
+    for (var i = items.length - 1; i > 0; i--) {
+      var n = random.nextInt(i + 1);
+      var temp = items[i];
+      items[i] = items[n];
+      items[n] = temp;
+    }
+    print(items);
+    return items;
+  }
+
 
 Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
   return showModalBottomSheet(
@@ -98,7 +113,14 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                           ElevatedButton(
                             onPressed: (){
                               Navigator.pop(context);
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayPage(item)));
+                              List<int> indexList=[];
+                              for (var i = 0; i < item.cards.length ; i++) {
+                                indexList.add(i);    
+                              }
+                              if(play_model.randomflag==true){
+                                indexList=shuffle(indexList);
+                              }
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayPage(item,indexList)));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
