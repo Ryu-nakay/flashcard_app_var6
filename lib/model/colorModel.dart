@@ -7,5 +7,5 @@ class ColorModel extends ChangeNotifier{
   Color bodyColor2;
   Color textColor;
 
-  ColorModel(this.appbarColor1,this.appbarTextColor,this.bodyColor1,this.bodyColor2,this.textColor);
+  ColorModel({required this.appbarColor1,required this.appbarTextColor,required this.bodyColor1,required this.bodyColor2,required this.textColor});
 }

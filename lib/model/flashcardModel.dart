@@ -27,6 +27,35 @@ class CardListModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  //DB関連
+
+  //DBのインスタンス化
+  Future<Database> get database async {
+    final Future<Database> _database = openDatabase(
+      join(await getDatabasesPath(), 'FC_database.db'),
+      onCreate: (db, version) {
+        return db.execute(
+          "CREATE TABLE FlashCardTable(name TEXT,id INTEGER PRIMARY KEY AUTOINCREMENT,tableName TEXT)",
+        );
+      },
+      version: 1,
+    );
+    return _database;
+  }
+
+  //テーブル作成
+  Future<void> makeFC(CardList tempCardList)async{
+    final db=await database;
+    db.rawQuery('CREATE TABLE '+tempCardList.tableName+' (id INTEGER PRIMARY KEY AUTOINCREMENT,front TEXT,frontMemo TEXT,back TEXT,backMemo TEXT,evaluation TEXT)');
+    for (var item in tempCardList.cards) {
+      db.rawQuery('INSERT INTO '+tempCardList.tableName+'(front,frontMemo,back,backMemo,evaluation) VALUES('+'\''+item.front.toString()+'\',\''  +item.frontMemo.toString()+'\',\'' +item.back.toString()+'\',\'' +item.backMemo.toString()+'\',\'' +item.evaluation.toString()+'\''+')');
+    }
+    String name=tempCardList.name;
+    String tableName=tempCardList.tableName;
+    db.rawQuery('INSERT INTO FlashCardTable(name,tableName) VALUES(\'$name\',\'$tableName\')');
+    print('makeFC() was done\n\n\n\n\n\n\n\n');
+  }
+
 }
 
 //1件の単語帳データクラス

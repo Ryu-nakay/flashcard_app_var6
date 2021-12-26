@@ -27,12 +27,12 @@ class PlayPage extends StatelessWidget{
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Provider.of<ColorModel>(context).appbarTextColor,
+          backgroundColor: Provider.of<ColorModel>(context).appbarColor1,
           centerTitle: true,
           title: Text(
             '${inputCardList.name}',
             style: TextStyle(
-              color: Provider.of<ColorModel>(context).appbarColor1,
+              color: Provider.of<ColorModel>(context).appbarTextColor,
               fontSize: AppBar().preferredSize.height*0.3
             ),
           ),

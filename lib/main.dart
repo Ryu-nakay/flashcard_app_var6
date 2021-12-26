@@ -22,7 +22,7 @@ void main() {
           create: (_) => CardListModel(),
         ),
         ChangeNotifierProvider(
-          create: (_) => ColorModel(Colors.white, Colors.black, Colors.white, Colors.white, Colors.black),
+          create: (_) =>ColorModel(appbarColor1: Colors.black, appbarTextColor: Colors.white, bodyColor1: Colors.white, bodyColor2: Colors.white, textColor: Colors.black) // ColorModel( Colors.white, Colors.black, Colors.white, Colors.white, Colors.black),
         ),
         ChangeNotifierProvider(
           create: (_) => HomeNavbarModel(),

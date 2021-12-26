@@ -14,7 +14,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
                 return CupertinoActionSheetAction(
                   onPressed: (){
                     Navigator.pop(context);
-                    
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(-1)));
                   }, 
                   child: Text(
                     '手動',
@@ -27,7 +27,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
               
               CupertinoActionSheetAction(
                 onPressed:(){
-
+                  
                 },
                 child: Text(
                     'ファイル読み込み',

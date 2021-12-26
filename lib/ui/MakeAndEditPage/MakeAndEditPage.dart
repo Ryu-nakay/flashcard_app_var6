@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
@@ -8,23 +10,27 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MakeAndEditPage extends StatelessWidget{
-  int inputItemIndex;
+  int inputItemIndex;//新規作成のときは-1を受け取る
 
   MakeAndEditPage(this.inputItemIndex);
 
   @override
   Widget build(BuildContext context){
+    if(inputItemIndex==-1){
+      inputItemIndex=Provider.of<CardListModel>(context).list.length;
+      Provider.of<CardListModel>(context).list.add(CardList(name: '', tableName: '', cards:[CardData(id: 0, front: '', frontMemo: '', back: '', backMemo: '', evaluation: 'average')]));
+    }
     Size size=MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async=>false,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Provider.of<ColorModel>(context).appbarTextColor,
+          backgroundColor: Provider.of<ColorModel>(context).appbarColor1,
           centerTitle: true,
           title: Text(
-            '作成',
+            '作成・編集',
             style: TextStyle(
-              color: Provider.of<ColorModel>(context).appbarColor1,
+              color: Provider.of<ColorModel>(context).appbarTextColor,
               fontSize: AppBar().preferredSize.height*0.3
             ),
           ),
@@ -68,7 +74,7 @@ class MakeAndEditPage extends StatelessWidget{
                             ),
                             controller: TextEditingController(text: card_list_model.list[inputItemIndex].name),
                             onChanged: (value){
-                              
+                              card_list_model.list[inputItemIndex].name=value;
                             },
                           ),
                         ),
@@ -157,18 +163,55 @@ class MakeAndEditPage extends StatelessWidget{
                             ],
                           ),
                         ),
-    
-                        ElevatedButton(
-                          onPressed: (){
-                            Navigator.pop(context);
-                          }, 
-                          child: Text('セーブして戻る'),
-                          style: ElevatedButton.styleFrom(
-                            primary: Provider.of<ColorModel>(context).textColor,
-                            side: BorderSide(
-                              color:Provider.of<ColorModel>(context).bodyColor1,
-                              width: 1
-                            )
+
+                        
+
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 30
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                onPressed: (){
+                                  Navigator.pop(context);
+                                  make_and_edit_model.changePageIndex(0);
+                                  
+                                }, 
+                                child: Text('キャンセル'),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Provider.of<ColorModel>(context).textColor,
+                                  side: BorderSide(
+                                    color:Provider.of<ColorModel>(context).bodyColor1,
+                                    width: 1
+                                  )
+                                ),
+                              ),
+
+                              ElevatedButton(
+                                onPressed: card_list_model.list[inputItemIndex].name!='' ?
+                                (){
+                                  Navigator.pop(context);
+                                  make_and_edit_model.changePageIndex(0);
+                                  //DBに登録する処理
+                                  if(card_list_model.list[inputItemIndex].tableName==''){
+                                    card_list_model.list[inputItemIndex].tableName=card_list_model.list[inputItemIndex].name+Random().nextInt(99999).toString();
+                                  }
+                                  card_list_model.makeFC(card_list_model.list[inputItemIndex]);
+                                }
+                                :
+                                null, 
+                                child: Text('セーブして戻る'),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Provider.of<ColorModel>(context).textColor,
+                                  side: BorderSide(
+                                    color:Provider.of<ColorModel>(context).bodyColor1,
+                                    width: 1
+                                  )
+                                ),
+                              ),
+                            ],
                           ),
                         )
                       ],
