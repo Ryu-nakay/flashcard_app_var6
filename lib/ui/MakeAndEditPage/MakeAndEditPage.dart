@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
@@ -7,19 +6,23 @@ import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
 import 'package:flashcard_app_ver6/ui/MakeAndEditPage/InputCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 class MakeAndEditPage extends StatelessWidget{
-  int inputItemIndex;//新規作成のときは-1を受け取る
+  CardList inputItem;
+  late bool makeModeFlag;
 
-  MakeAndEditPage(this.inputItemIndex);
+  MakeAndEditPage(this.inputItem){
+    if(inputItem.name==''){
+      this.makeModeFlag=true;
+    }else{
+      this.makeModeFlag=false;
+    }
+  }
 
   @override
   Widget build(BuildContext context){
-    if(inputItemIndex==-1){
-      inputItemIndex=Provider.of<CardListModel>(context).list.length;
-      Provider.of<CardListModel>(context).list.add(CardList(name: '', tableName: '', cards:[CardData(id: 0, front: '', frontMemo: '', back: '', backMemo: '', evaluation: 'average')]));
-    }
     Size size=MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async=>false,
@@ -72,9 +75,9 @@ class MakeAndEditPage extends StatelessWidget{
                               hintText: '暗記カード名を入力',
                               contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                             ),
-                            controller: TextEditingController(text: card_list_model.list[inputItemIndex].name),
+                            controller: TextEditingController(text: inputItem.name),
                             onChanged: (value){
-                              card_list_model.list[inputItemIndex].name=value;
+                              inputItem.name=value;
                             },
                           ),
                         ),
@@ -90,8 +93,8 @@ class MakeAndEditPage extends StatelessWidget{
                           child: ExpandablePageView(
                             controller:make_and_edit_model.cardPageController,
                             children: [
-                              for (var i = 0; i < card_list_model.list[inputItemIndex].cards.length; i++)
-                                InputCard(size, context,inputItemIndex,i),
+                              for (var i = 0; i < inputItem.cards.length; i++)
+                                InputCard(size, context,inputItem,i),
                             ],
                             onPageChanged: (int page){
                               make_and_edit_model.changePageIndex(page);
@@ -122,20 +125,20 @@ class MakeAndEditPage extends StatelessWidget{
                                   )
                                 ),
                               ),
-                              Text('${make_and_edit_model.cardPageIndex+1}/${card_list_model.list[inputItemIndex].cards.length}'),
+                              Text('${make_and_edit_model.cardPageIndex+1}/${inputItem.cards.length}'),
                               ElevatedButton(
                                 onPressed:
-                                make_and_edit_model.cardPageIndex==card_list_model.list[inputItemIndex].cards.length-1?
+                                make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
                                 (){
                                   //プラスボタンの処理
-                                  card_list_model.addNewCard(inputItemIndex);
+                                  inputItem.cards.add(CardData(id: inputItem.cards.length, front: '', frontMemo: '', back: '', backMemo: '', evaluation: 'average'));
                                   make_and_edit_model.nextPage();
                                 }:
                                 (){
                                   //次のページに送る処理
                                   make_and_edit_model.nextPage();
                                 },
-                                child: make_and_edit_model.cardPageIndex==card_list_model.list[inputItemIndex].cards.length-1?
+                                child: make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
                                 Icon(
                                   Icons.add,
                                   color: Provider.of<ColorModel>(context).bodyColor1,
@@ -144,7 +147,7 @@ class MakeAndEditPage extends StatelessWidget{
                                   Icons.arrow_forward_ios,
                                   color: Provider.of<ColorModel>(context).textColor,
                                 ),
-                                style: make_and_edit_model.cardPageIndex==card_list_model.list[inputItemIndex].cards.length-1?
+                                style: make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
                                 ElevatedButton.styleFrom(
                                   primary: Provider.of<ColorModel>(context).textColor,
                                   side: BorderSide(
@@ -176,7 +179,7 @@ class MakeAndEditPage extends StatelessWidget{
                               ElevatedButton(
                                 onPressed: (){
                                   Navigator.pop(context);
-                                  make_and_edit_model.changePageIndex(0);
+                                  make_and_edit_model.cardPageIndex=0;
                                   
                                 }, 
                                 child: Text('キャンセル'),
@@ -188,17 +191,24 @@ class MakeAndEditPage extends StatelessWidget{
                                   )
                                 ),
                               ),
-
                               ElevatedButton(
-                                onPressed: card_list_model.list[inputItemIndex].name!='' ?
+                                onPressed: inputItem.name!='' ?
                                 (){
                                   Navigator.pop(context);
-                                  make_and_edit_model.changePageIndex(0);
+                                  make_and_edit_model.cardPageIndex=0;
+                                  
                                   //DBに登録する処理
-                                  if(card_list_model.list[inputItemIndex].tableName==''){
-                                    card_list_model.list[inputItemIndex].tableName=card_list_model.list[inputItemIndex].name+Random().nextInt(99999).toString();
+                                  if(makeModeFlag==true){
+                                    if(inputItem.tableName==''){
+                                      inputItem.tableName=inputItem.name+Random().nextInt(99999).toString();
+                                    }
+                                    card_list_model.makeFC(inputItem);
+                                  }else{
+                                    card_list_model.updateFC(inputItem);
                                   }
-                                  card_list_model.makeFC(card_list_model.list[inputItemIndex]);
+
+                                  card_list_model.getDBdata();
+                                  
                                 }
                                 :
                                 null, 

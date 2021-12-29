@@ -5,10 +5,17 @@ import 'package:sqflite/sqflite.dart';
 
 //flashcard_list_model
 class CardListModel extends ChangeNotifier{
-  List<CardList> list=[CardList(name:'テスト単語帳',tableName:'テスト単語帳１',cards: [CardData(id:1, front: 'test１',frontMemo: 'メモおもて',back: 'テスト１',backMemo: 'メモうら',evaluation: 'average'),CardData(id:2, front: 'test2',frontMemo: 'メモおもて2',back: 'テスト2',backMemo: 'メモうら2',evaluation: 'average')])]; 
+  List<CardList> list=[]; 
 
-  FlashcardListModel(){
-    //getDBdata();
+  CardListModel(){
+    getDBdata();
+  }
+
+
+  Future<void> getDBdata() async {
+
+    list=await allSelectFC();
+    notifyListeners();
   }
 
   void addNewCard(int inputItemIndex){
@@ -48,12 +55,64 @@ class CardListModel extends ChangeNotifier{
     final db=await database;
     db.rawQuery('CREATE TABLE '+tempCardList.tableName+' (id INTEGER PRIMARY KEY AUTOINCREMENT,front TEXT,frontMemo TEXT,back TEXT,backMemo TEXT,evaluation TEXT)');
     for (var item in tempCardList.cards) {
-      db.rawQuery('INSERT INTO '+tempCardList.tableName+'(front,frontMemo,back,backMemo,evaluation) VALUES('+'\''+item.front.toString()+'\',\''  +item.frontMemo.toString()+'\',\'' +item.back.toString()+'\',\'' +item.backMemo.toString()+'\',\'' +item.evaluation.toString()+'\''+')');
+      String tempEvaluation=item.evaluation==''?'average':item.evaluation;
+      db.rawQuery('INSERT INTO '+tempCardList.tableName+'(front,frontMemo,back,backMemo,evaluation) VALUES('+'\''+item.front.toString()+'\',\''  +item.frontMemo.toString()+'\',\'' +item.back.toString()+'\',\'' +item.backMemo.toString()+'\',\'' +tempEvaluation+'\''+')');
     }
     String name=tempCardList.name;
     String tableName=tempCardList.tableName;
     db.rawQuery('INSERT INTO FlashCardTable(name,tableName) VALUES(\'$name\',\'$tableName\')');
     print('makeFC() was done\n\n\n\n\n\n\n\n');
+  }
+
+  //一つの単語帳の読み込み
+  Future<CardList> selectFC(String tableName)async{
+    final Database db=await database;
+    final List<Map<String,dynamic>> maps=await db.rawQuery('SELECT * FROM '+tableName);
+
+    List<CardData> tempWords= List.generate(maps.length,(i){
+                            return CardData(
+                                      id: maps[i]['id'],
+                                      front: maps[i]['front'],
+                                      frontMemo: maps[i]['frontMemo'],
+                                      back: maps[i]['back'],
+                                      backMemo: maps[i]['backMemo'],
+                                      evaluation: maps[i]['evaluation']
+                                    );
+                          }
+    );
+    var dbname=await db.rawQuery('SELECT name FROM FlashCardTable WHERE tableName=\'$tableName\'');
+    return CardList(name: dbname[0]['name'].toString(), tableName: tableName, cards: tempWords);
+  }
+
+  //全単語帳の読み込み
+  Future<List<CardList>> allSelectFC()async{
+    final Database db=await database;
+    final List<Map<String,dynamic>> maps=await db.rawQuery('SELECT tableName FROM FlashCardTable');
+
+    List<CardList> tempList=[];
+    //print(maps[0]['tableName'].toString());
+
+    for(int i=0;i<maps.length;i++){
+      print(maps[i]['tableName']);
+      CardList tempGetData=await selectFC(maps[i]['tableName']);
+      tempList.add(tempGetData);
+      print(tempGetData.cards.length);
+      //tempList.add(tempGetData);
+    }
+
+    print('allSelectFC is done');
+    return tempList;
+  }
+
+  //単語帳の要素全削除からの追加
+  Future<void> updateFC(CardList tempCardList)async{
+    final db=await database;
+    db.rawQuery('DELETE FROM \'${tempCardList.tableName}\'');
+    for (var item in tempCardList.cards) {
+      String tempEvaluation=item.evaluation==''?'average':item.evaluation;
+      db.rawQuery('INSERT INTO '+tempCardList.tableName+'(front,frontMemo,back,backMemo,evaluation) VALUES('+'\''+item.front.toString()+'\',\''  +item.frontMemo.toString()+'\',\'' +item.back.toString()+'\',\'' +item.backMemo.toString()+'\',\'' +tempEvaluation+'\''+')');
+    }
+    print('updateFC() was done\n\n\n\n\n\n\n\n');
   }
 
 }

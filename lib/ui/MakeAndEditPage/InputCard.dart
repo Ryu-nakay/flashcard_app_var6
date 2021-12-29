@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
-Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex){
+Widget InputCard(Size size,BuildContext context,CardList inputItem,int cardIndex){
   return Consumer<CardListModel>(builder: (context, card_list_model, child) {
     return Column(
       children: [
@@ -48,9 +48,9 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                         hintText: 'おもてに表示するを単語を入力',
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
-                      controller: TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].front),
+                      controller: TextEditingController(text:inputItem.cards[cardIndex].front),
                       onChanged: (value){
-                        card_list_model.list[inputItemIndex].cards[cardIndex].front=value;
+                        inputItem.cards[cardIndex].front=value;
                       },
                     ),
                   ),
@@ -85,9 +85,9 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                         hintText: 'おもてメモに表示するメモを入力',
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
-                      controller:  TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].frontMemo),
+                      controller:  TextEditingController(text:inputItem.cards[cardIndex].frontMemo),
                       onChanged: (value){
-                        card_list_model.list[inputItemIndex].cards[cardIndex].frontMemo=value;
+                        inputItem.cards[cardIndex].frontMemo=value;
                       },
                     ),
                   ),
@@ -137,9 +137,9 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                         hintText: 'うらに表示する単語を入力',
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
-                      controller:  TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].back),
+                      controller:  TextEditingController(text:inputItem.cards[cardIndex].back),
                       onChanged: (value){
-                        card_list_model.list[inputItemIndex].cards[cardIndex].back=value;
+                        inputItem.cards[cardIndex].back=value;
                       },
                     ),
                   ),
@@ -174,9 +174,9 @@ Widget InputCard(Size size,BuildContext context,int inputItemIndex,int cardIndex
                         hintText: 'うらメモに表示するメモを入力',
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
-                      controller:  TextEditingController(text:card_list_model.list[inputItemIndex].cards[cardIndex].backMemo),
+                      controller:  TextEditingController(text:inputItem.cards[cardIndex].backMemo),
                       onChanged: (value){
-                        card_list_model.list[inputItemIndex].cards[cardIndex].backMemo=value;
+                        inputItem.cards[cardIndex].backMemo=value;
                       },
                     ),
                   ),

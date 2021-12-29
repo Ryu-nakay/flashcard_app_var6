@@ -14,7 +14,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
                 return CupertinoActionSheetAction(
                   onPressed: (){
                     Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(-1)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(CardList(name:'',tableName: '',cards: [CardData(id: 0, front: '', frontMemo: '', back: '', backMemo: '', evaluation: 'average')]))));
                   }, 
                   child: Text(
                     '手動',
@@ -24,7 +24,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
                   )
                 );
               }),
-              
+              /*
               CupertinoActionSheetAction(
                 onPressed:(){
                   
@@ -36,7 +36,9 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
                     ),
                   )
               ),
+              */
 
+              /*
               CupertinoActionSheetAction(
                 onPressed:(){
 
@@ -48,6 +50,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
                     ),
                   )
               )
+              */
             ],
             cancelButton: CupertinoActionSheetAction(
               onPressed: (){
