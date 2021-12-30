@@ -123,6 +123,7 @@ class PlayPage extends StatelessWidget{
                             ElevatedButton(
                               onPressed: (){
                                 card_list_model.changeCardEvaluation('poor', inputCardListIndex, indexList[play_model.cardPageIndex]);
+                                card_list_model.updateCardDataMemoAndEva(card_list_model.list[inputCardListIndex].tableName, card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]]);
                               }, 
                               child: Text(
                                 'わからない',
@@ -151,6 +152,7 @@ class PlayPage extends StatelessWidget{
                             ElevatedButton(
                               onPressed: (){
                                 card_list_model.changeCardEvaluation('average', inputCardListIndex, indexList[play_model.cardPageIndex]);
+                                card_list_model.updateCardDataMemoAndEva(card_list_model.list[inputCardListIndex].tableName, card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]]);
                               }, 
                               child: Text(
                                 'ふつう',
@@ -179,6 +181,7 @@ class PlayPage extends StatelessWidget{
                             ElevatedButton(
                               onPressed: (){
                                 card_list_model.changeCardEvaluation('good', inputCardListIndex, indexList[play_model.cardPageIndex]);
+                                card_list_model.updateCardDataMemoAndEva(card_list_model.list[inputCardListIndex].tableName, card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]]);
                               }, 
                               child: Text(
                                 'おぼえた',

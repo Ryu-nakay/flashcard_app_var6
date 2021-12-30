@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -115,6 +116,12 @@ class CardListModel extends ChangeNotifier{
     print('updateFC() was done\n\n\n\n\n\n\n\n');
   }
 
+  Future<void> updateCardDataMemoAndEva(String tableName,CardData inputCardData)async{
+    final db =await database;
+    db.rawQuery('UPDATE ${tableName} SET frontMemo=\'${inputCardData.frontMemo}\',backMemo=\'${inputCardData.backMemo}\',evaluation=\'${inputCardData.evaluation}\' WHERE id=${inputCardData.id}');
+    print('updateCardDataMemoAndEva was done /////////////////');
+  }
+
 }
 
 //1件の単語帳データクラス
@@ -127,6 +134,14 @@ class CardList{
     //単語のリスト
 
   CardList({required this.name,required this.tableName,required this.cards});
+
+  CardList copyWith(){
+    List<CardData> copyCards=[];
+    for (var item in this.cards) {
+      copyCards.add(item.copyWith());
+    }
+    return CardList(name: this.name, tableName: this.tableName, cards: copyCards);
+  }
 }
 
 //１セットの単語データクラス
@@ -139,4 +154,8 @@ class CardData{
   String evaluation;//評価 good,average,poor
 
   CardData({required this.id,required this.front,required this.frontMemo,required this.back,required this.backMemo,required this.evaluation});
+
+  CardData copyWith(){
+    return CardData(id: this.id, front: this.front, frontMemo: this.frontMemo, back: this.back, backMemo: this.backMemo, evaluation: this.evaluation);
+  }
 }

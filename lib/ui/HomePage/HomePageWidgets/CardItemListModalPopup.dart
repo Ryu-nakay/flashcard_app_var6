@@ -14,7 +14,7 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                 return CupertinoActionSheetAction(
                   onPressed: (){
                     Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(item)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(item.copyWith())));
                   }, 
                   child: Text(
                     '暗記カードを編集',

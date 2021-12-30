@@ -1,3 +1,4 @@
+import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,7 +36,31 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
                 )
               ),
               Container(
-                child: Text('${card_list_model.list[cardListIndex].cards[cardIndex].frontMemo}')
+                padding: EdgeInsets.all(8),
+                child: TextFormField(
+                      cursorColor: Provider.of<ColorModel>(context).textColor,
+                      decoration: InputDecoration(
+                        enabledBorder:OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
+                          )
+                        ),
+                        focusedBorder:OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
+                            width: 2
+                          )
+                        ),
+                        border: OutlineInputBorder(),
+                        hintText: 'メモを入力',
+                        contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
+                      ),
+                      controller: TextEditingController(text:card_list_model.list[cardListIndex].cards[cardIndex].frontMemo),
+                      onChanged: (value){
+                        card_list_model.list[cardListIndex].cards[cardIndex].frontMemo=value;
+                        card_list_model.updateCardDataMemoAndEva(card_list_model.list[cardListIndex].tableName, card_list_model.list[cardListIndex].cards[cardIndex]);
+                      },
+                    ),//Text('${card_list_model.list[cardListIndex].cards[cardIndex].frontMemo}')
               )
             ],
           ),
@@ -63,7 +88,31 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
                 )
               ),
               Container(
-                child: Text('${card_list_model.list[cardListIndex].cards[cardIndex].backMemo}')
+                padding: EdgeInsets.all(8),
+                child: TextFormField(
+                      cursorColor: Provider.of<ColorModel>(context).textColor,
+                      decoration: InputDecoration(
+                        enabledBorder:OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
+                          )
+                        ),
+                        focusedBorder:OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
+                            width: 2
+                          )
+                        ),
+                        border: OutlineInputBorder(),
+                        hintText: 'メモを入力',
+                        contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
+                      ),
+                      controller: TextEditingController(text:card_list_model.list[cardListIndex].cards[cardIndex].backMemo),
+                      onChanged: (value){
+                        card_list_model.list[cardListIndex].cards[cardIndex].backMemo=value;
+                        card_list_model.updateCardDataMemoAndEva(card_list_model.list[cardListIndex].tableName, card_list_model.list[cardListIndex].cards[cardIndex]);
+                      },
+                    ),//Text('${card_list_model.list[cardListIndex].cards[cardIndex].frontMemo}')
               )
             ],
           ),
