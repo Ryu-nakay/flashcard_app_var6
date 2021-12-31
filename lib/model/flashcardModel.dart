@@ -116,10 +116,20 @@ class CardListModel extends ChangeNotifier{
     print('updateFC() was done\n\n\n\n\n\n\n\n');
   }
 
+  //メモと評価のアップデート
   Future<void> updateCardDataMemoAndEva(String tableName,CardData inputCardData)async{
     final db =await database;
     db.rawQuery('UPDATE ${tableName} SET frontMemo=\'${inputCardData.frontMemo}\',backMemo=\'${inputCardData.backMemo}\',evaluation=\'${inputCardData.evaluation}\' WHERE id=${inputCardData.id}');
     print('updateCardDataMemoAndEva was done /////////////////');
+  }
+
+  //暗記カードの削除
+  Future<void> deleteCardList(String tableName,int listIndex) async{
+    final db =await database;
+    db.rawQuery('DROP TABLE ${tableName}');
+    db.rawQuery('DELETE FROM FlashCardTable WHERE tableName=\'${tableName}\'');
+    this.list.removeAt(listIndex);
+    notifyListeners();
   }
 
 }

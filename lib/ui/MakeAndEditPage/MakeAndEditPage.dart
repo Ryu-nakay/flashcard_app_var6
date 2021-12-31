@@ -94,10 +94,37 @@ class MakeAndEditPage extends StatelessWidget{
                             controller:make_and_edit_model.cardPageController,
                             children: [
                               for (var i = 0; i < inputItem.cards.length; i++)
-                                InputCard(size, context,inputItem,i),
+                                Container(
+                                  child: Stack(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              GestureDetector(
+                                                child: Icon(
+                                                  Icons.remove_circle,
+                                                  color: Colors.red,
+                                                ),
+                                                onTap:inputItem.cards.length!=1?
+                                                () {
+                                                  //削除の処理
+                                                }
+                                                :null,
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      InputCard(size, context,inputItem,i),
+                                    ],
+                                  )
+                                ),
                             ],
                             onPageChanged: (int page){
-                              make_and_edit_model.changePageIndex(page);
+                              make_and_edit_model.cardPageIndex=page;
+                              make_and_edit_model.notifyListeners();
                             },
                           ),
                         ),
@@ -197,6 +224,7 @@ class MakeAndEditPage extends StatelessWidget{
                                   Navigator.pop(context);
                                   make_and_edit_model.cardPageIndex=0;
                                   
+
                                   //DBに登録する処理
                                   if(makeModeFlag==true){
                                     if(inputItem.tableName==''){

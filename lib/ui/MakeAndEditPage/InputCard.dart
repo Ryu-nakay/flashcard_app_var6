@@ -35,12 +35,12 @@ Widget InputCard(Size size,BuildContext context,CardList inputItem,int cardIndex
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor,
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
                             width: 2
                           )
                         ),
@@ -62,7 +62,7 @@ Widget InputCard(Size size,BuildContext context,CardList inputItem,int cardIndex
                   Text(
                     'おもてメモ：',
                     style: TextStyle(
-                      fontSize: size.width*0.03
+                      fontSize: size.width*0.03,
                     ),
                   ),
                   Padding(
@@ -72,12 +72,12 @@ Widget InputCard(Size size,BuildContext context,CardList inputItem,int cardIndex
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor,
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1),
                             width: 2
                           )
                         ),
@@ -124,12 +124,12 @@ Widget InputCard(Size size,BuildContext context,CardList inputItem,int cardIndex
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor,
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
                             width: 2
                           )
                         ),
@@ -161,12 +161,12 @@ Widget InputCard(Size size,BuildContext context,CardList inputItem,int cardIndex
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor,
+                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1),
                             width: 2
                           )
                         ),

@@ -9,20 +9,16 @@ class MakeAndEditModel extends ChangeNotifier{
 
   int pageDuration=600;
 
-  void changePageIndex(int page){
-    cardPageIndex=page;
-    print(cardPageIndex);
-    notifyListeners();
-  }
+
 
   void nextPage(){
     cardPageController.nextPage(duration: Duration(milliseconds: pageDuration), curve: Curves.ease);
-    notifyListeners();
+    //notifyListeners();
   }
 
-  void previousPage(){
+  Future<void> previousPage()async{
     cardPageController.previousPage(duration: Duration(milliseconds: pageDuration), curve: Curves.ease);
-    notifyListeners();
+    //notifyListeners();
   }
 
 }

@@ -27,15 +27,35 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
               
               CupertinoActionSheetAction(
                 onPressed:(){
-                  /*
                   Navigator.pop(context);
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return deleteItemAlert(context, size, item);
+                      return CupertinoAlertDialog(
+                        title: Text("削除してもよろしいですか？"),
+                        content: Text("復元することはできません。"),
+                        actions: <Widget>[
+                          Consumer<CardListModel>(builder: (context, card_list_model, child) {
+                            return CupertinoDialogAction(
+                              child: Text("削除"),
+                              isDestructiveAction: true,
+                              onPressed: () {
+                                card_list_model.deleteCardList(item.tableName,card_list_model.list.indexOf(item));
+                                Navigator.pop(context);
+                              } ,
+                            );
+                          }),
+                          
+                          CupertinoDialogAction(
+                            child: Text("キャンセル"),
+                            onPressed: (){
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
                     },
                   );
-                  */
                 },
                 child: Text('削除',style: TextStyle(color: Colors.red))
               )
