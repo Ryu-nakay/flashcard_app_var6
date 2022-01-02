@@ -3,6 +3,7 @@ import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
+import 'package:flashcard_app_ver6/ui/MakeAndEditPage/DeleteModePage.dart';
 import 'package:flashcard_app_ver6/ui/MakeAndEditPage/InputCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,41 +94,27 @@ class MakeAndEditPage extends StatelessWidget{
                           child: ExpandablePageView(
                             controller:make_and_edit_model.cardPageController,
                             children: [
-                              for (var i = 0; i < inputItem.cards.length; i++)
+                              for (int i=0;i<inputItem.cards.length;i++)
                                 Container(
                                   child: Stack(
                                     children: [
-                                      Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: [
-                                              GestureDetector(
-                                                child: Icon(
-                                                  Icons.remove_circle,
-                                                  color: Colors.red,
-                                                ),
-                                                onTap:inputItem.cards.length!=1?
-                                                () {
-                                                  //削除の処理
-                                                }
-                                                :null,
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                      InputCard(size, context,inputItem,i),
+                                      
+                                      InputCard(size, context,inputItem.cards[i]),
                                     ],
                                   )
                                 ),
                             ],
                             onPageChanged: (int page){
-                              make_and_edit_model.cardPageIndex=page;
-                              make_and_edit_model.notifyListeners();
+                              if(page<0){
+                                page=0;
+                              }
+                              make_and_edit_model.changePage(page);
+                              print('${make_and_edit_model.cardPageIndex}');
+                              print('change!');
                             },
                           ),
                         ),
+
 
                         Container(
                           child: Row(
@@ -152,7 +139,7 @@ class MakeAndEditPage extends StatelessWidget{
                                   )
                                 ),
                               ),
-                              Text('${make_and_edit_model.cardPageIndex+1}/${inputItem.cards.length}'),
+                              Text('${Provider.of<MakeAndEditModel>(context).cardPageIndex+1}/${inputItem.cards.length}'),
                               ElevatedButton(
                                 onPressed:
                                 make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
@@ -194,7 +181,14 @@ class MakeAndEditPage extends StatelessWidget{
                           ),
                         ),
 
-                        
+                        Container(
+                          child: ElevatedButton(
+                            child: Text('カード削除モード'),
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>DeleteModePage(inputItem)));
+                            },
+                          ),
+                        ),
 
                         Container(
                           margin: EdgeInsets.only(
@@ -251,7 +245,9 @@ class MakeAndEditPage extends StatelessWidget{
                               ),
                             ],
                           ),
-                        )
+                        ),
+
+                        
                       ],
                     );
                   })
