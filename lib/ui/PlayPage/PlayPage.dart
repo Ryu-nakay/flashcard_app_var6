@@ -36,6 +36,12 @@ class PlayPage extends StatelessWidget{
               fontSize: AppBar().preferredSize.height*0.3
             ),
           ),
+          leading: IconButton(
+            onPressed: (){
+              Navigator.pop(context);  
+            }, 
+            icon: Icon(Icons.arrow_back_ios)
+          ),
         ),
         body:Consumer<CardListModel>(builder: (context, card_list_model, child) {
           int inputCardListIndex=card_list_model.list.indexOf(inputCardList);

@@ -99,7 +99,7 @@ class HomePage extends StatelessWidget{
               children: <Widget>[
                 IconButton(
                   icon: Icon(
-                    Icons.person_outline,
+                    Icons.account_circle_outlined,
                     color: Provider.of<ColorModel>(context).bodyColor1,
                   ),
                   onPressed: () {
@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget{
                 ),
                 IconButton(
                   icon: Icon(
-                    Icons.info_outline,
+                    Icons.settings,
                     color: Provider.of<ColorModel>(context).bodyColor1,
                   ),
                   onPressed: () {

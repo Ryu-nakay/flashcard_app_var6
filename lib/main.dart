@@ -2,6 +2,7 @@ import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/homeNavbarModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
+import 'package:flashcard_app_ver6/model/pieChartModel.dart';
 import 'package:flashcard_app_ver6/model/playModel.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => PlayModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PieChartModel(),
         ),
       ],
       child: MyApp()
