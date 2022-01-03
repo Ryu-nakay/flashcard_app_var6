@@ -70,7 +70,7 @@ class MyPage extends StatelessWidget{
                             dataMap: pie_chart_model.dataMap,
                             animationDuration: Duration(milliseconds: 800),
                             chartRadius: size.width*0.3,
-                            colorList: [Colors.greenAccent,Colors.yellow,Colors.red],
+                            colorList: [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
                             centerText: '学習状況',
                             centerTextStyle: TextStyle(
                               fontSize: size.width*0.02,
