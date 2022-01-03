@@ -3,7 +3,6 @@ import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/flashcardModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
-import 'package:flashcard_app_ver6/ui/MakeAndEditPage/DeleteModePage.dart';
 import 'package:flashcard_app_ver6/ui/MakeAndEditPage/InputCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -89,30 +88,37 @@ class MakeAndEditPage extends StatelessWidget{
                   Consumer<MakeAndEditModel>(builder: (context, make_and_edit_model, child) {
                     return Column(
                       children: [
-                        Container(
-                          width: size.width*0.9,
-                          child: ExpandablePageView(
-                            controller:make_and_edit_model.cardPageController,
-                            children: [
-                              for (int i=0;i<inputItem.cards.length;i++)
-                                Container(
-                                  child: Stack(
-                                    children: [
-                                      
-                                      InputCard(size, context,inputItem.cards[i]),
-                                    ],
-                                  )
-                                ),
-                            ],
-                            onPageChanged: (int page){
-                              if(page<0){
-                                page=0;
-                              }
-                              make_and_edit_model.changePage(page);
-                              print('${make_and_edit_model.cardPageIndex}');
-                              print('change!');
-                            },
-                          ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: size.width*0.9,
+                              child: InputCard(size, context,inputItem.cards[make_and_edit_model.cardPageIndex]),
+                            ),
+                            Container(
+                              width: size.width*0.9,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  IconButton(
+                                    onPressed:
+                                    inputItem.cards.length!=1?
+                                    (){
+                                      inputItem.cards.removeAt(make_and_edit_model.cardPageIndex);
+                                      if(make_and_edit_model.cardPageIndex>=inputItem.cards.length){
+                                        make_and_edit_model.cardPageIndex-=1;
+                                      }
+                                      make_and_edit_model.notifyListeners();
+                                    }
+                                    :null, 
+                                    icon:Icon(
+                                      Icons.remove_circle,
+                                      color: Colors.redAccent,
+                                    )
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
 
 
@@ -125,7 +131,7 @@ class MakeAndEditPage extends StatelessWidget{
                                 make_and_edit_model.cardPageIndex==0?
                                 null:
                                 (){
-                                  make_and_edit_model.previousPage();
+                                  make_and_edit_model.changePage(make_and_edit_model.cardPageIndex-1!=0?make_and_edit_model.cardPageIndex-1:0);
                                 },
                                 child: Icon(
                                   Icons.arrow_back_ios,
@@ -146,11 +152,11 @@ class MakeAndEditPage extends StatelessWidget{
                                 (){
                                   //プラスボタンの処理
                                   inputItem.cards.add(CardData(id: inputItem.cards.length, front: '', frontMemo: '', back: '', backMemo: '', evaluation: 'average'));
-                                  make_and_edit_model.nextPage();
+                                  make_and_edit_model.changePage(make_and_edit_model.cardPageIndex+1<inputItem.cards.length?make_and_edit_model.cardPageIndex+1:inputItem.cards.length-1);
                                 }:
                                 (){
                                   //次のページに送る処理
-                                  make_and_edit_model.nextPage();
+                                  make_and_edit_model.changePage(make_and_edit_model.cardPageIndex+1<inputItem.cards.length?make_and_edit_model.cardPageIndex+1:inputItem.cards.length-1);
                                 },
                                 child: make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
                                 Icon(
@@ -182,15 +188,6 @@ class MakeAndEditPage extends StatelessWidget{
                         ),
 
                         Container(
-                          child: ElevatedButton(
-                            child: Text('カード削除モード'),
-                            onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>DeleteModePage(inputItem)));
-                            },
-                          ),
-                        ),
-
-                        Container(
                           margin: EdgeInsets.only(
                             top: 30
                           ),
@@ -218,6 +215,16 @@ class MakeAndEditPage extends StatelessWidget{
                                   Navigator.pop(context);
                                   make_and_edit_model.cardPageIndex=0;
                                   
+                                  List<CardData> deleteList=[];
+
+                                  for (var item in inputItem.cards) {
+                                    if(item.front=='' && item.back==''){
+                                      deleteList.add(item);
+                                    }
+                                  }
+                                  for (var item in deleteList) {
+                                    inputItem.cards.remove(item);
+                                  }
 
                                   //DBに登録する処理
                                   if(makeModeFlag==true){

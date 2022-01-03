@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget{
           ),
         ),
         actions: [
+          /*
           IconButton(
             onPressed: (){
               showDialog(
@@ -41,6 +42,7 @@ class HomePage extends StatelessWidget{
               color: Provider.of<ColorModel>(context).appbarTextColor,
             )
           )
+          */
         ],
       ),
       body: Consumer<CardListModel>(builder: (context, card_list_model, child) {
