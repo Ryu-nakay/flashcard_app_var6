@@ -1,5 +1,5 @@
 import 'package:flashcard_app_ver6/model/colorModel.dart';
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +14,15 @@ Widget InputCard(Size size,BuildContext context,CardData card){
           //height: size.width/1.6,
           margin: EdgeInsets.all(6),
           decoration: BoxDecoration(
+            color: Provider.of<ColorModel>(context).bodyColor1,
+            boxShadow: const [
+              BoxShadow(
+                color:Colors.black26,
+                spreadRadius: 1,
+                blurRadius: 10,
+                offset: Offset(10,10)
+              )
+            ],
             border: Border.all(),
             borderRadius: BorderRadius.circular(20)
           ),
@@ -101,8 +110,17 @@ Widget InputCard(Size size,BuildContext context,CardData card){
         Container(
           width: size.width,
           //height: size.width/1.6,
-          margin: EdgeInsets.all(6),
+          margin: const EdgeInsets.all(6),
           decoration: BoxDecoration(
+            color: Provider.of<ColorModel>(context).bodyColor1,
+            boxShadow: const [
+              BoxShadow(
+                color:Colors.black26,
+                spreadRadius: 1,
+                blurRadius: 10,
+                offset: Offset(10,10)
+              )
+            ],
             border: Border.all(),
             borderRadius: BorderRadius.circular(20)
           ),

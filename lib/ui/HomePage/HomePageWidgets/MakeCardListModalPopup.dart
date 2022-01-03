@@ -1,4 +1,4 @@
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flashcard_app_ver6/ui/MakeAndEditPage/MakeAndEditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

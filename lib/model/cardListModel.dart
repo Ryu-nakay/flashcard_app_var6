@@ -12,6 +12,8 @@ class CardListModel extends ChangeNotifier{
     getDBdata();
   }
 
+  ////////////集計用////////////////////////////////////////////////////////
+
   int allCardsLength(){
     int count=0;
     for (var item in list) {
@@ -55,6 +57,38 @@ class CardListModel extends ChangeNotifier{
     }
     return count;
   }
+
+  int goodCount(CardList inputCards){
+    int count=0;
+    for (var item in inputCards.cards) {
+      if(item.evaluation=='good'){
+        count++;
+      }
+    }
+    return count;
+  }
+
+  int averageCount(CardList inputCards){
+    int count=0;
+    for (var item in inputCards.cards) {
+      if(item.evaluation=='average'){
+        count++;
+      }
+    }
+    return count;
+  }
+
+  int poorCount(CardList inputCards){
+    int count=0;
+    for (var item in inputCards.cards) {
+      if(item.evaluation=='poor'){
+        count++;
+      }
+    }
+    return count;
+  }
+
+  //////////////////////////////////////////////////////////////////////
 
 
   Future<void> getDBdata() async {

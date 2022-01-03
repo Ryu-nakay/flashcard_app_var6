@@ -1,5 +1,5 @@
 import 'package:flashcard_app_ver6/model/colorModel.dart';
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flashcard_app_ver6/model/homeNavbarModel.dart';
 import 'package:flashcard_app_ver6/ui/AboutAppPage/AboutAppPage.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/CardItemList.dart';
@@ -8,8 +8,6 @@ import 'package:flashcard_app_ver6/ui/MyPage/MyPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'HomePageWidgets/TutorialDialog.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -26,7 +24,7 @@ class HomePage extends StatelessWidget{
             fontSize: AppBar().preferredSize.height*0.3
           ),
         ),
-        actions: [
+        actions: const [
           /*
           IconButton(
             onPressed: (){
@@ -53,7 +51,19 @@ class HomePage extends StatelessWidget{
             children: [
               //単語帳リストを表示
               for (var item in card_list_model.list) 
-                CardItemList(size, item,context)
+                Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color:Colors.black26,
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                        offset: Offset(15,15)
+                      )
+                    ]
+                  ),
+                  child: CardItemList(size, item,context)
+                )
             ],
           ),
         );
@@ -68,6 +78,14 @@ class HomePage extends StatelessWidget{
             border: Border.all(color: Colors.white, width: 2.0),
             color: Colors.white.withOpacity(0),
             shape: BoxShape.circle,
+            boxShadow: const[
+              BoxShadow(
+                color:Colors.black26,
+                spreadRadius: 1,
+                blurRadius: 10,
+                offset: Offset(20,20)
+              )
+            ]
           ),
           child: FloatingActionButton(
             backgroundColor: Provider.of<ColorModel>(context).textColor,
@@ -75,15 +93,15 @@ class HomePage extends StatelessWidget{
             onPressed: () {
               MakeCardListModalPopup(context, size);
             },
-            child: Icon(Icons.add),
+            child:const Icon(Icons.add),
           ),
         ),//ホーム画面中央下部のボタン->
 
         bottomNavigationBar: BottomAppBar(
-          color: Colors.black,
+          color: Provider.of<ColorModel>(context).textColor,
           notchMargin: 6.0,
           shape: AutomaticNotchedShape(
-            RoundedRectangleBorder(),
+            const RoundedRectangleBorder(),
             StadiumBorder(
               side: BorderSide(
                 color: Provider.of<ColorModel>(context).textColor,
@@ -93,7 +111,7 @@ class HomePage extends StatelessWidget{
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: new Row(
+            child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -105,6 +123,7 @@ class HomePage extends StatelessWidget{
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyPage()));
                   },
+                  
                 ),
                 IconButton(
                   icon: Icon(

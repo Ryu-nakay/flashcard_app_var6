@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'flashcardModel.dart';
+import 'cardListModel.dart';
 
 class MakeAndEditModel extends ChangeNotifier{
   String listNam='';

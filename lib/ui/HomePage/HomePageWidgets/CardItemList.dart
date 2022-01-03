@@ -1,5 +1,5 @@
 import 'package:flashcard_app_ver6/model/colorModel.dart';
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/CardItemListModalPopup.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePageWidgets/PlayModal.dart';
 import 'package:flutter/material.dart';

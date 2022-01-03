@@ -1,5 +1,5 @@
 import 'package:flashcard_app_ver6/model/colorModel.dart';
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flashcard_app_ver6/model/playModel.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +19,15 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
             width: size.width-10,
             height: (size.width-10)/1.6,
             decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color:Colors.black26,
+                  spreadRadius: 1,
+                  blurRadius: 20,
+                  offset: Offset(10,10)
+                )
+              ],
+              color: Provider.of<ColorModel>(context).bodyColor1,
               border: Border.all(
                 width: 1,
                 color: Colors.black,
@@ -82,6 +91,15 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
             width: size.width-10,
             height: (size.width-10)/1.6,
             decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color:Colors.black26,
+                  spreadRadius: 1,
+                  blurRadius: 20,
+                  offset: Offset(10,10)
+                )
+              ],
+              color: Provider.of<ColorModel>(context).bodyColor1,
               border: Border.all(
                 width: 1,
                 color: Colors.black,

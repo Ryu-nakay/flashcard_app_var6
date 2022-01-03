@@ -1,8 +1,8 @@
 import 'package:flashcard_app_ver6/model/colorModel.dart';
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flashcard_app_ver6/model/homeNavbarModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
-import 'package:flashcard_app_ver6/model/pieChartModel.dart';
+import 'package:flashcard_app_ver6/model/myPageModel.dart';
 import 'package:flashcard_app_ver6/model/playModel.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ void main() {
           create: (_) => CardListModel(),
         ),
         ChangeNotifierProvider(
-          create: (_) =>ColorModel(appbarColor1: Colors.black, appbarTextColor: Colors.white, bodyColor1: Colors.white, bodyColor2: Colors.white, textColor: Colors.black) // ColorModel( Colors.white, Colors.black, Colors.white, Colors.white, Colors.black),
+          create: (_) =>ColorModel() // ColorModel( Colors.white, Colors.black, Colors.white, Colors.white, Colors.black),
         ),
         ChangeNotifierProvider(
           create: (_) => HomeNavbarModel(),
@@ -35,7 +35,7 @@ void main() {
           create: (_) => PlayModel(),
         ),
         ChangeNotifierProvider(
-          create: (_) => PieChartModel(),
+          create: (_) => MyPageModel(),
         ),
       ],
       child: MyApp()

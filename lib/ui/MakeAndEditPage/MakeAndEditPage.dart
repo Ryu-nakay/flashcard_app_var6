@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
-import 'package:flashcard_app_ver6/model/flashcardModel.dart';
+import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flashcard_app_ver6/model/makeAndEditModel.dart';
 import 'package:flashcard_app_ver6/ui/MakeAndEditPage/InputCard.dart';
 import 'package:flutter/cupertino.dart';
@@ -47,7 +47,10 @@ class MakeAndEditPage extends StatelessWidget{
                 children: [
                   Container(
                     width:size.width*0.9 ,
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(
+                      top: 10,
+                      bottom: 20
+                    ),
                     child: Row(
                       children: [
                         Text(
@@ -73,7 +76,7 @@ class MakeAndEditPage extends StatelessWidget{
                               ),
                               border: OutlineInputBorder(),
                               hintText: '暗記カード名を入力',
-                              contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
+                              contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                             ),
                             controller: TextEditingController(text: inputItem.name),
                             onChanged: (value){
@@ -110,7 +113,7 @@ class MakeAndEditPage extends StatelessWidget{
                                       make_and_edit_model.notifyListeners();
                                     }
                                     :null, 
-                                    icon:Icon(
+                                    icon:const Icon(
                                       Icons.remove_circle,
                                       color: Colors.redAccent,
                                     )
@@ -123,6 +126,7 @@ class MakeAndEditPage extends StatelessWidget{
 
 
                         Container(
+                          margin: const EdgeInsets.only(top: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -188,66 +192,91 @@ class MakeAndEditPage extends StatelessWidget{
                         ),
 
                         Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             top: 30
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ElevatedButton(
-                                onPressed: (){
-                                  Navigator.pop(context);
-                                  make_and_edit_model.cardPageIndex=0;
-                                  
-                                }, 
-                                child: Text('キャンセル'),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Provider.of<ColorModel>(context).textColor,
-                                  side: BorderSide(
-                                    color:Provider.of<ColorModel>(context).bodyColor1,
-                                    width: 1
-                                  )
+                              Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color:Colors.black26,
+                                      spreadRadius: 1,
+                                      blurRadius: 10,
+                                      offset: Offset(10,10)
+                                    )
+                                  ],
+                                ),
+                                child: ElevatedButton(
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                    make_and_edit_model.cardPageIndex=0;
+                                    
+                                  }, 
+                                  child: const Text('キャンセル'),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Provider.of<ColorModel>(context).textColor,
+                                    side: BorderSide(
+                                      color:Provider.of<ColorModel>(context).bodyColor1,
+                                      width: 1
+                                    )
+                                  ),
                                 ),
                               ),
-                              ElevatedButton(
-                                onPressed: inputItem.name!='' ?
-                                (){
-                                  Navigator.pop(context);
-                                  make_and_edit_model.cardPageIndex=0;
-                                  
-                                  List<CardData> deleteList=[];
 
-                                  for (var item in inputItem.cards) {
-                                    if(item.front=='' && item.back==''){
-                                      deleteList.add(item);
+                              Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color:Colors.black26,
+                                      spreadRadius: 1,
+                                      blurRadius: 10,
+                                      offset: Offset(10,10)
+                                    )
+                                  ],
+                                ),
+                                child: ElevatedButton(
+                                  onPressed: inputItem.name!='' ?
+                                  (){
+                                    Navigator.pop(context);
+                                    make_and_edit_model.cardPageIndex=0;
+                                    
+                                    List<CardData> deleteList=[];
+
+                                    for (var item in inputItem.cards) {
+                                      if(item.front=='' && item.back==''){
+                                        deleteList.add(item);
+                                      }
                                     }
-                                  }
-                                  for (var item in deleteList) {
-                                    inputItem.cards.remove(item);
-                                  }
-
-                                  //DBに登録する処理
-                                  if(makeModeFlag==true){
-                                    if(inputItem.tableName==''){
-                                      inputItem.tableName=inputItem.name+Random().nextInt(99999).toString();
+                                    for (var item in deleteList) {
+                                      inputItem.cards.remove(item);
                                     }
-                                    card_list_model.makeFC(inputItem);
-                                  }else{
-                                    card_list_model.updateFC(inputItem);
-                                  }
 
-                                  card_list_model.getDBdata();
-                                  
-                                }
-                                :
-                                null, 
-                                child: Text('セーブして戻る'),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Provider.of<ColorModel>(context).textColor,
-                                  side: BorderSide(
-                                    color:Provider.of<ColorModel>(context).bodyColor1,
-                                    width: 1
-                                  )
+                                    //DBに登録する処理
+                                    if(makeModeFlag==true){
+                                      if(inputItem.tableName==''){
+                                        inputItem.tableName=inputItem.name+Random().nextInt(99999).toString();
+                                      }
+                                      card_list_model.makeFC(inputItem);
+                                    }else{
+                                      card_list_model.updateFC(inputItem);
+                                    }
+
+                                    card_list_model.getDBdata();
+                                    
+                                  }
+                                  :
+                                  null, 
+                                  child: const Text('セーブして戻る'),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Provider.of<ColorModel>(context).textColor,
+                                    side: BorderSide(
+                                      color:Provider.of<ColorModel>(context).bodyColor1,
+                                      width: 1
+                                    )
+                                  ),
                                 ),
                               ),
                             ],
