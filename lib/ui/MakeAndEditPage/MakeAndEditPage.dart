@@ -262,17 +262,61 @@ class MakeAndEditPage extends StatelessWidget{
                                       inputItem.cards.remove(item);
                                     }
 
-                                    //DBに登録する処理
-                                    if(makeModeFlag==true){
-                                      if(inputItem.tableName==''){
-                                        inputItem.tableName=inputItem.name+Random().nextInt(99999).toString();
+                                    if(inputItem.cards.length!=0){
+                                      //DBに登録する処理
+                                      if(makeModeFlag==true){
+                                        if(inputItem.tableName==''){
+                                          inputItem.tableName=inputItem.name+Random().nextInt(99999).toString();
+                                        }
+                                        card_list_model.makeFC(inputItem);
+                                      }else{
+                                        card_list_model.updateFC(inputItem);
                                       }
-                                      card_list_model.makeFC(inputItem);
+
+                                      card_list_model.getDBdata();
+
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Theme(
+                                            data: ThemeData.light(),
+                                            child: CupertinoAlertDialog(
+                                              title:Text("${inputItem.name}を保存しました。"),
+                                              content:const Text(""),
+                                              actions: <Widget>[
+                                                CupertinoDialogAction(
+                                                  child:const Text("OK"),
+                                                  onPressed: (){
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
                                     }else{
-                                      card_list_model.updateFC(inputItem);
+                                      //ポップアップ
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return CupertinoAlertDialog(
+                                            title:const Text("保存できませんでした"),
+                                            content:const Text("白紙でないカードが1枚以上必要です。"),
+                                            actions: <Widget>[
+                                              CupertinoDialogAction(
+                                                child:const Text("OK"),
+                                                onPressed: (){
+                                                  Navigator.pop(context);
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                     }
 
-                                    card_list_model.getDBdata();
+                                    
                                     
                                   }
                                   :
