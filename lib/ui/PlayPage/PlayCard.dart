@@ -19,7 +19,7 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
             width: size.width-10,
             height: (size.width-10)/1.6,
             decoration: BoxDecoration(
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color:Colors.black26,
                   spreadRadius: 1,
@@ -27,7 +27,7 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
                   offset: Offset(10,10)
                 )
               ],
-              color: Provider.of<ColorModel>(context).bodyColor1,
+              color: Provider.of<ColorModel>(context).cardColor,
               border: Border.all(
                 width: 1,
                 color: Colors.black,
@@ -38,35 +38,36 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   child: Text(
                     play_model.modeflag==true?
                     '${card_list_model.list[cardListIndex].cards[cardIndex].front}'
                     :'${card_list_model.list[cardListIndex].cards[cardIndex].back}',
                     style: TextStyle(
-                      fontSize: size.width*0.08
+                      fontSize: size.width*0.08,
+                      color: Provider.of<ColorModel>(context).cardTextColor
                     ),
                   )
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: TextFormField(
-                        cursorColor: Provider.of<ColorModel>(context).textColor,
+                        cursorColor: Provider.of<ColorModel>(context).cardTextColor,
                         decoration: InputDecoration(
                           enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
+                              color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2)
                             )
                           ),
                           focusedBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
+                              color: Provider.of<ColorModel>(context).cardColor.withOpacity(0.2),
                               width: 2
                             )
                           ),
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintText: 'メモを入力',
-                          contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
+                          contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                         ),
                         controller: TextEditingController(
                           text:play_model.modeflag==true?
@@ -91,7 +92,7 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
             width: size.width-10,
             height: (size.width-10)/1.6,
             decoration: BoxDecoration(
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color:Colors.black26,
                   spreadRadius: 1,
@@ -99,7 +100,7 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
                   offset: Offset(10,10)
                 )
               ],
-              color: Provider.of<ColorModel>(context).bodyColor1,
+              color: Provider.of<ColorModel>(context).cardColor,
               border: Border.all(
                 width: 1,
                 color: Colors.black,
@@ -110,35 +111,36 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   child: Text(
                     play_model.modeflag==true?
                     '${card_list_model.list[cardListIndex].cards[cardIndex].back}'
                     :'${card_list_model.list[cardListIndex].cards[cardIndex].front}',
                     style: TextStyle(
-                      fontSize: size.width*0.08
+                      fontSize: size.width*0.08,
+                      color:Provider.of<ColorModel>(context).cardTextColor
                     ),
                   )
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: TextFormField(
-                        cursorColor: Provider.of<ColorModel>(context).textColor,
+                        cursorColor: Provider.of<ColorModel>(context).cardTextColor,
                         decoration: InputDecoration(
                           enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
+                              color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2)
                             )
                           ),
                           focusedBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
+                              color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2),
                               width: 2
                             )
                           ),
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintText: 'メモを入力',
-                          contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
+                          contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                         ),
                         controller: TextEditingController(
                           text:play_model.modeflag==true?

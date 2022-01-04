@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 class AboutAppPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
+    Size size=MediaQuery.of(context).size;
     return Consumer<ColorModel>(builder: (context, color_model, child) {
       return Scaffold(
         appBar: AppBar(
@@ -21,13 +22,21 @@ class AboutAppPage extends StatelessWidget{
           backgroundColor: Provider.of<ColorModel>(context).appbarColor1,
         ),
         body: Container(
+          width: size.width,
+          height: size.height,
+          color: Provider.of<ColorModel>(context).backgroundColor,
           child: Column(
             children: [
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('現在のカラー:${color_model.colorMode}'),
+                  Text(
+                    '現在のカラー:${color_model.colorMode}',
+                    style: TextStyle(
+                      color: Provider.of<ColorModel>(context).textColor
+                    ),
+                  ),
                   ElevatedButton(
                     onPressed: (){
                       showCupertinoModalPopup(
@@ -65,9 +74,14 @@ class AboutAppPage extends StatelessWidget{
                           );
                         });
                     }, 
-                    child: Text('色を選択'),
+                    child: Text(
+                      '色を選択',
+                      style: TextStyle(
+                        color: color_model.textInMainColor
+                      ),
+                    ),
                     style: ElevatedButton.styleFrom(
-                      primary: color_model.textColor
+                      primary: color_model.mainColor
                     ),
                   ),
                 ],
@@ -75,16 +89,22 @@ class AboutAppPage extends StatelessWidget{
 
               Column(
                 children: [
-                  Text('変更予定の色:${color_model.selectListColor}'),
+                  Text(
+                    '変更予定の色:${color_model.selectListColor}',
+                    style: TextStyle(
+                      color:color_model.textInMainColor 
+                    ),
+                  ),
                   ElevatedButton(
                     onPressed:color_model.selectListColor!=color_model.colorMode? 
                     (){
                       color_model.changeColorMode();
+
                     }
                     :null, 
                     child: Text('適用'),
                     style: ElevatedButton.styleFrom(
-                      primary: color_model.textColor
+                      primary: color_model.mainColor
                     ),
                   )
                 ],

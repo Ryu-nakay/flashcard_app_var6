@@ -16,7 +16,7 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                     Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(item.copyWith())));
                   }, 
-                  child: Text(
+                  child:const Text(
                     '暗記カードを編集',
                     style: TextStyle(
                       color: Colors.blue
@@ -32,12 +32,12 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                     context: context,
                     builder: (context) {
                       return CupertinoAlertDialog(
-                        title: Text("削除してもよろしいですか？"),
-                        content: Text("復元することはできません。"),
+                        title:const Text("削除してもよろしいですか？"),
+                        content:const Text("復元することはできません。"),
                         actions: <Widget>[
                           Consumer<CardListModel>(builder: (context, card_list_model, child) {
                             return CupertinoDialogAction(
-                              child: Text("削除"),
+                              child:const Text("削除"),
                               isDestructiveAction: true,
                               onPressed: () {
                                 card_list_model.deleteCardList(item.tableName,card_list_model.list.indexOf(item));
@@ -47,7 +47,7 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                           }),
                           
                           CupertinoDialogAction(
-                            child: Text("キャンセル"),
+                            child:const Text("キャンセル"),
                             onPressed: (){
                               Navigator.pop(context);
                             },
@@ -57,14 +57,14 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                     },
                   );
                 },
-                child: Text('削除',style: TextStyle(color: Colors.red))
+                child:const Text('削除',style: TextStyle(color: Colors.red))
               )
             ],
             cancelButton: CupertinoActionSheetAction(
               onPressed: (){
                 Navigator.pop(context);
               },
-              child: Text(
+              child:const Text(
                 'Cancel',
                 style: TextStyle(
                   color: Colors.blue

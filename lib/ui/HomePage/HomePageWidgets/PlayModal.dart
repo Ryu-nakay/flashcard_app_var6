@@ -34,7 +34,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                 margin: const EdgeInsets.only(top: 64),
                 decoration: BoxDecoration(
                   //モーダル自体の色
-                  color: Provider.of<ColorModel>(context).bodyColor1,
+                  color: Provider.of<ColorModel>(context).backgroundColor,
                   //角丸にする
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -60,7 +60,8 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                             Text(
                               'カード数：'+item.cards.length.toString()+'枚',
                               style: TextStyle(
-                                fontSize: size.width*0.05
+                                fontSize: size.width*0.05,
+                                color: Provider.of<ColorModel>(context).textColor
                               ),
                             )
                           ],
@@ -73,7 +74,12 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                         ),
                         child: Column(
                           children: [
-                            Text(play_model.modeflag==true?'おもて→うら':'うら→おもて'),
+                            Text(
+                              play_model.modeflag==true?'おもて→うら':'うら→おもて',
+                              style: TextStyle(
+                                color: Provider.of<ColorModel>(context).textColor
+                              ),
+                            ),
                             Container(
                               decoration:const BoxDecoration(
                                 boxShadow: [
@@ -87,7 +93,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                               ),
                               child: CupertinoSwitch(
                                 value: play_model.modeflag,
-                                activeColor: Provider.of<ColorModel>(context).textColor,
+                                activeColor: Provider.of<ColorModel>(context).mainColor,
                                 //trackColor: Colors.white,
                                 onChanged: (bool v) {
                                   play_model.setModeflag(v);
@@ -118,7 +124,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                               ),
                               child: CupertinoSwitch(
                                 value: play_model.randomflag ,
-                                activeColor: Provider.of<ColorModel>(context).textColor,
+                                activeColor: Provider.of<ColorModel>(context).mainColor,
                                 //trackColor: Colors.white,
                                 onChanged: (bool v) {
                                   play_model.setRandomflag(v);
@@ -162,16 +168,16 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                                 child: Text(
                                   'スタート',
                                   style: TextStyle(
-                                    color: Colors.black,
+                                    color: Provider.of<ColorModel>(context).textColor,
                                     fontSize: size.width*0.05
                                   )
                                 ),
                               ),
                               style: ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).bodyColor1,
-                                shape: StadiumBorder(),
+                                primary: Provider.of<ColorModel>(context).backgroundColor,
+                                shape: const StadiumBorder(),
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).textColor,
+                                  color: Provider.of<ColorModel>(context).mainColor,
                                   width: 1,
                                 ),
                               ),

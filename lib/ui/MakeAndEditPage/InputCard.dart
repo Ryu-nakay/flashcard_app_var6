@@ -14,7 +14,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
           //height: size.width/1.6,
           margin: EdgeInsets.all(6),
           decoration: BoxDecoration(
-            color: Provider.of<ColorModel>(context).bodyColor1,
+            color: Provider.of<ColorModel>(context).cardColor,
             boxShadow: const [
               BoxShadow(
                 color:Colors.black26,
@@ -40,16 +40,16 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      cursorColor: Provider.of<ColorModel>(context).textColor,
+                      cursorColor: Provider.of<ColorModel>(context).cardTextColor,
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2),
                             width: 2
                           )
                         ),
@@ -77,16 +77,16 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      cursorColor: Provider.of<ColorModel>(context).textColor,
+                      cursorColor: Provider.of<ColorModel>(context).cardTextColor,
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1)
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.1)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1),
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.1),
                             width: 2
                           )
                         ),
@@ -112,7 +112,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
           //height: size.width/1.6,
           margin: const EdgeInsets.all(6),
           decoration: BoxDecoration(
-            color: Provider.of<ColorModel>(context).bodyColor1,
+            color: Provider.of<ColorModel>(context).cardColor,
             boxShadow: const [
               BoxShadow(
                 color:Colors.black26,
@@ -138,16 +138,16 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      cursorColor: Provider.of<ColorModel>(context).textColor,
+                      cursorColor: Provider.of<ColorModel>(context).cardTextColor,
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2)
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.2),
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.2),
                             width: 2
                           )
                         ),
@@ -175,16 +175,16 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      cursorColor: Provider.of<ColorModel>(context).textColor,
+                      cursorColor: Provider.of<ColorModel>(context).cardTextColor,
                       decoration: InputDecoration(
                         enabledBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1)
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.1)
                           )
                         ),
                         focusedBorder:OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Provider.of<ColorModel>(context).textColor.withOpacity(0.1),
+                            color: Provider.of<ColorModel>(context).cardTextColor.withOpacity(0.1),
                             width: 2
                           )
                         ),

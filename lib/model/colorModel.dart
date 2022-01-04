@@ -4,50 +4,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ColorModel extends ChangeNotifier{
-  List<String> colorList=['Light','Blue'];
+  List<String> colorList=['Light','Dark','Blue'];
   String selectListColor='Light';
-
-  void changeColorPicker(index){
-    selectListColor=colorList[index];
-    notifyListeners();
-  }
-
-  void changeColorMode(){
-    colorMode=selectListColor;
-    applyColor();
-  }
-
-  void applyColor(){
-    if(colorMode=='Light'){
-      appbarColor1=Colors.black;
-      appbarTextColor=Colors.white;
-      bodyColor1=Colors.white;
-      bodyColor2=Colors.white;
-      textColor=Colors.black;
-    }else if(colorMode=='Blue'){
-      appbarColor1=Colors.blueAccent;
-      appbarTextColor=Colors.white;
-      bodyColor1=Colors.white;
-      bodyColor2=Colors.white;
-      textColor=Colors.blueAccent;
-    }else{
-      appbarColor1=Colors.black;
-      appbarTextColor=Colors.white;
-      bodyColor1=Colors.white;
-      bodyColor2=Colors.white;
-      textColor=Colors.black;
-    }
-
-    notifyListeners();
-  }
-
-  String colorMode='Dark';
-
-  Color appbarColor1=Colors.black;
-  Color appbarTextColor=Colors.white;
-  Color bodyColor1=Colors.white;
-  Color bodyColor2=Colors.white;
-  Color textColor=Colors.black;
 
   ColorModel(){
     Future(()async{
@@ -57,6 +15,74 @@ class ColorModel extends ChangeNotifier{
 
     print(colorMode+';;;;');
   }
+
+
+  void changeColorPicker(index){
+    selectListColor=colorList[index];
+    notifyListeners();
+  }
+
+  void changeColorMode(){
+    colorMode=selectListColor;
+    applyColor();
+    updateColorDB();
+  }
+
+  void applyColor(){
+    if(colorMode=='Light'){
+      appbarColor1=Colors.black;
+      appbarTextColor=Colors.white;
+      backgroundColor=Colors.white;
+      mainColor=Colors.black;
+      textColor=Colors.black;
+      textInMainColor=Colors.white;
+      cardColor=Colors.white;
+      cardTextColor=Colors.black;
+    }else if(colorMode=='Blue'){
+      appbarColor1=Colors.blueAccent;
+      appbarTextColor=Colors.white;
+      backgroundColor=Colors.white;
+      mainColor=Colors.blueAccent;
+      textColor=Colors.black;
+      textInMainColor=Colors.white;
+      cardColor=Colors.white;
+      cardTextColor=Colors.black;
+    }else if(colorMode=='Dark'){
+      appbarColor1=Colors.black;
+      appbarTextColor=Colors.white;
+      backgroundColor=Color(0xFF15202B);
+      mainColor=Colors.black;
+      textColor=Colors.white;
+      textInMainColor=Colors.white;
+      cardColor=Colors.white;
+      cardTextColor=Colors.black;
+    }else{
+      appbarColor1=Colors.black;
+      appbarTextColor=Colors.white;
+      backgroundColor=Colors.white;
+      mainColor=Colors.black;
+      textColor=Colors.black;
+      textInMainColor=Colors.white;
+      cardColor=Colors.white;
+      cardTextColor=Colors.black;
+
+      colorMode='Light';
+    }
+
+    notifyListeners();
+  }
+
+  String colorMode='Dark';
+
+  Color appbarColor1=Colors.black;
+  Color appbarTextColor=Colors.white;
+  Color backgroundColor=Colors.white;
+  Color mainColor=Colors.black;
+  Color textColor=Colors.black;
+  Color textInMainColor=Colors.white;
+  Color cardColor=Colors.white;
+  Color cardTextColor=Colors.black;
+
 
   //DBのインスタンス化
   Future<Database> get database async {
@@ -85,5 +111,10 @@ class ColorModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  Future<void> updateColorDB()async{
+    final Database db=await database;
+    db.rawQuery('UPDATE ColorTable SET color=\'${colorMode}\'');
+    print('color is updated');
+  }
 
 }

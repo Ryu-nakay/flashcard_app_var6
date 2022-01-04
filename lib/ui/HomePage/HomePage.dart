@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget{
       body: Consumer<CardListModel>(builder: (context, card_list_model, child) {
         
         return Container(//単語帳見出し一覧
-          color: Provider.of<ColorModel>(context).bodyColor1,
+          color: Provider.of<ColorModel>(context).backgroundColor,
           child: ListView(
             children: [
               //単語帳リストを表示
@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget{
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: Container(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 2.0),
+            border: Border.all(color: Provider.of<ColorModel>(context).textInMainColor, width: 2.0),
             color: Colors.white.withOpacity(0),
             shape: BoxShape.circle,
             boxShadow: const[
@@ -88,8 +88,8 @@ class HomePage extends StatelessWidget{
             ]
           ),
           child: FloatingActionButton(
-            backgroundColor: Provider.of<ColorModel>(context).textColor,
-            foregroundColor: Provider.of<ColorModel>(context).bodyColor1,
+            backgroundColor: Provider.of<ColorModel>(context).mainColor,
+            //foregroundColor: Provider.of<ColorModel>(context).bodyColor1,
             onPressed: () {
               MakeCardListModalPopup(context, size);
             },
@@ -98,13 +98,13 @@ class HomePage extends StatelessWidget{
         ),//ホーム画面中央下部のボタン->
 
         bottomNavigationBar: BottomAppBar(
-          color: Provider.of<ColorModel>(context).textColor,
+          color: Provider.of<ColorModel>(context).mainColor,
           notchMargin: 6.0,
           shape: AutomaticNotchedShape(
             const RoundedRectangleBorder(),
             StadiumBorder(
               side: BorderSide(
-                color: Provider.of<ColorModel>(context).textColor,
+                color: Provider.of<ColorModel>(context).mainColor,
                 width: 1
               ),
             ),
@@ -118,7 +118,7 @@ class HomePage extends StatelessWidget{
                 IconButton(
                   icon: Icon(
                     Icons.account_circle_outlined,
-                    color: Provider.of<ColorModel>(context).bodyColor1,
+                    color: Provider.of<ColorModel>(context).textInMainColor,
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyPage()));
@@ -128,7 +128,7 @@ class HomePage extends StatelessWidget{
                 IconButton(
                   icon: Icon(
                     Icons.settings,
-                    color: Provider.of<ColorModel>(context).bodyColor1,
+                    color: Provider.of<ColorModel>(context).textInMainColor,
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>AboutAppPage()));

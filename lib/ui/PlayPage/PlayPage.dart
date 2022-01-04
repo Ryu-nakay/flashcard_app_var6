@@ -35,9 +35,13 @@ class PlayPage extends StatelessWidget{
             Provider.of<PlayModel>(context,listen: false).changePageIndex(0);
             Navigator.pop(context);
           }, 
-          icon: Icon(Icons.arrow_back_ios)
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Provider.of<ColorModel>(context).appbarTextColor,
+          )
         ),
       ),
+      
       body:Consumer<CardListModel>(builder: (context, card_list_model, child) {
         int inputCardListIndex=card_list_model.list.indexOf(inputCardList);
         return Consumer<PlayModel>(builder: (context, play_model, child) {
@@ -49,7 +53,7 @@ class PlayPage extends StatelessWidget{
                   children: [
                     for (var i = 0; i < inputCardList.cards.length; i++)
                       Container(
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         child: PlayCard(size,inputCardList, inputCardList.cards[indexList[i]])
                       )
                   ],
@@ -71,17 +75,22 @@ class PlayPage extends StatelessWidget{
                         },
                         child: Icon(
                           Icons.arrow_back_ios,
-                          color: Provider.of<ColorModel>(context).textColor,
+                          color: Provider.of<ColorModel>(context).mainColor,
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Provider.of<ColorModel>(context).bodyColor1,
+                          primary: Provider.of<ColorModel>(context).textInMainColor,
                           side: BorderSide(
-                            color:Provider.of<ColorModel>(context).textColor,
+                            color:Provider.of<ColorModel>(context).mainColor,
                             width: 1
                           )
                         ),
                       ),
-                      Text('${play_model.cardPageIndex+1}/${inputCardList.cards.length}'),
+                      Text(
+                        '${play_model.cardPageIndex+1}/${inputCardList.cards.length}',
+                        style: TextStyle(
+                          color: Provider.of<ColorModel>(context).textColor
+                        ),
+                      ),
                       ElevatedButton(
                         onPressed:
                         play_model.cardPageIndex==inputCardList.cards.length-1?
@@ -92,20 +101,20 @@ class PlayPage extends StatelessWidget{
                         },
                         child: Icon(
                           Icons.arrow_forward_ios,
-                          color: Provider.of<ColorModel>(context).textColor,
+                          color: Provider.of<ColorModel>(context).mainColor,
                         ),
                         style: play_model.cardPageIndex==inputCardList.cards.length-1?
                         ElevatedButton.styleFrom(
-                          primary: Provider.of<ColorModel>(context).textColor,
+                          primary: Provider.of<ColorModel>(context).textInMainColor,
                           side: BorderSide(
-                            color:Provider.of<ColorModel>(context).textColor,
+                            color:Provider.of<ColorModel>(context).mainColor,
                             width: 1
                           )
                         )
                         :ElevatedButton.styleFrom(
-                          primary: Provider.of<ColorModel>(context).bodyColor1,
+                          primary: Provider.of<ColorModel>(context).textInMainColor,
                           side: BorderSide(
-                            color:Provider.of<ColorModel>(context).textColor,
+                            color:Provider.of<ColorModel>(context).mainColor,
                             width: 1
                           )
                         ),
@@ -117,7 +126,12 @@ class PlayPage extends StatelessWidget{
                 Container(
                   child: Column(
                     children: [
-                      const Text('学習レベル'),
+                      Text(
+                        '学習レベル',
+                        style: TextStyle(
+                          color: Provider.of<ColorModel>(context).textColor
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -142,21 +156,21 @@ class PlayPage extends StatelessWidget{
                                 style: 
                                 TextStyle(
                                   color: card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='poor'? 
-                                  Provider.of<ColorModel>(context).textColor
-                                  :Provider.of<ColorModel>(context).bodyColor1
+                                  Provider.of<ColorModel>(context).mainColor
+                                  :Provider.of<ColorModel>(context).textInMainColor
                                 ),
                               ),
                               style:card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='poor'?
                               ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).bodyColor1,
+                                primary: Provider.of<ColorModel>(context).textInMainColor,
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).textColor,
+                                  color: Provider.of<ColorModel>(context).mainColor,
                                 )
                               )
                               :ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).textColor,
+                                primary: Provider.of<ColorModel>(context).mainColor,
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).bodyColor1,
+                                  color: Provider.of<ColorModel>(context).textInMainColor,
                                 )
                               )
                             ),
@@ -182,22 +196,22 @@ class PlayPage extends StatelessWidget{
                                 'ふつう',
                                 style: TextStyle(
                                   color: card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='average'? 
-                                  Provider.of<ColorModel>(context).textColor
-                                  :Provider.of<ColorModel>(context).bodyColor1
+                                  Provider.of<ColorModel>(context).mainColor
+                                  :Provider.of<ColorModel>(context).textInMainColor
                                 ),
                               ),
     
                               style:card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='average'?
                               ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).bodyColor1,
+                                primary: Provider.of<ColorModel>(context).textInMainColor,
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).textColor,
+                                  color: Provider.of<ColorModel>(context).mainColor,
                                 )
                               )
                               :ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).textColor,
+                                primary: Provider.of<ColorModel>(context).mainColor,
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).bodyColor1,
+                                  color: Provider.of<ColorModel>(context).textInMainColor,
                                 )
                               )
                             ),
@@ -223,21 +237,21 @@ class PlayPage extends StatelessWidget{
                                 'おぼえた',
                                 style:TextStyle(
                                   color: card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='good'? 
-                                  Provider.of<ColorModel>(context).textColor
-                                  :Provider.of<ColorModel>(context).bodyColor1
+                                  Provider.of<ColorModel>(context).mainColor
+                                  :Provider.of<ColorModel>(context).textInMainColor
                                 ),
                               ),
                               style:card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='good'?
                               ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).bodyColor1,
+                                primary: Provider.of<ColorModel>(context).textInMainColor,
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).textColor,
+                                  color: Provider.of<ColorModel>(context).mainColor,
                                 )
                               )
                               :ElevatedButton.styleFrom(
-                                primary: Provider.of<ColorModel>(context).textColor,
+                                primary: Provider.of<ColorModel>(context).mainColor,
                                 side: BorderSide(
-                                  color: Provider.of<ColorModel>(context).bodyColor1,
+                                  color: Provider.of<ColorModel>(context).textInMainColor,
                                 )
                               )
                             ),

@@ -139,12 +139,12 @@ class MakeAndEditPage extends StatelessWidget{
                                 },
                                 child: Icon(
                                   Icons.arrow_back_ios,
-                                  color: Provider.of<ColorModel>(context).textColor,
+                                  color: Provider.of<ColorModel>(context).textInMainColor,
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  primary: Provider.of<ColorModel>(context).bodyColor1,
+                                  primary: Provider.of<ColorModel>(context).mainColor,
                                   side: BorderSide(
-                                    color:Provider.of<ColorModel>(context).textColor,
+                                    color:Provider.of<ColorModel>(context).mainColor,
                                     width: 1
                                   )
                                 ),
@@ -165,24 +165,24 @@ class MakeAndEditPage extends StatelessWidget{
                                 child: make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
                                 Icon(
                                   Icons.add,
-                                  color: Provider.of<ColorModel>(context).bodyColor1,
+                                  color: Provider.of<ColorModel>(context).textInMainColor,
                                 )
                                 :Icon(
                                   Icons.arrow_forward_ios,
-                                  color: Provider.of<ColorModel>(context).textColor,
+                                  color: Provider.of<ColorModel>(context).textInMainColor,
                                 ),
                                 style: make_and_edit_model.cardPageIndex==inputItem.cards.length-1?
                                 ElevatedButton.styleFrom(
-                                  primary: Provider.of<ColorModel>(context).textColor,
+                                  primary: Provider.of<ColorModel>(context).mainColor,
                                   side: BorderSide(
-                                    color:Provider.of<ColorModel>(context).textColor,
+                                    color:Provider.of<ColorModel>(context).mainColor,
                                     width: 1
                                   )
                                 )
                                 :ElevatedButton.styleFrom(
-                                  primary: Provider.of<ColorModel>(context).bodyColor1,
+                                  primary: Provider.of<ColorModel>(context).mainColor,
                                   side: BorderSide(
-                                    color:Provider.of<ColorModel>(context).textColor,
+                                    color:Provider.of<ColorModel>(context).mainColor,
                                     width: 1
                                   )
                                 ),
@@ -215,11 +215,16 @@ class MakeAndEditPage extends StatelessWidget{
                                     make_and_edit_model.cardPageIndex=0;
                                     
                                   }, 
-                                  child: const Text('キャンセル'),
+                                  child:Text(
+                                    'キャンセル',
+                                    style: TextStyle(
+                                      color: Provider.of<ColorModel>(context).textInMainColor
+                                    ),
+                                  ),
                                   style: ElevatedButton.styleFrom(
-                                    primary: Provider.of<ColorModel>(context).textColor,
+                                    primary: Provider.of<ColorModel>(context).mainColor,
                                     side: BorderSide(
-                                      color:Provider.of<ColorModel>(context).bodyColor1,
+                                      color:Provider.of<ColorModel>(context).mainColor,
                                       width: 1
                                     )
                                   ),
@@ -227,7 +232,9 @@ class MakeAndEditPage extends StatelessWidget{
                               ),
 
                               Container(
-                                decoration: const BoxDecoration(
+                                decoration:
+                                inputItem.name!='' ?
+                                const BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
                                       color:Colors.black26,
@@ -236,7 +243,8 @@ class MakeAndEditPage extends StatelessWidget{
                                       offset: Offset(10,10)
                                     )
                                   ],
-                                ),
+                                )
+                                :const BoxDecoration(),
                                 child: ElevatedButton(
                                   onPressed: inputItem.name!='' ?
                                   (){
@@ -269,11 +277,16 @@ class MakeAndEditPage extends StatelessWidget{
                                   }
                                   :
                                   null, 
-                                  child: const Text('セーブして戻る'),
+                                  child: Text(
+                                    'セーブして戻る',
+                                    style: TextStyle(
+                                      color: Provider.of<ColorModel>(context).textInMainColor
+                                    ),
+                                  ),
                                   style: ElevatedButton.styleFrom(
-                                    primary: Provider.of<ColorModel>(context).textColor,
+                                    primary: Provider.of<ColorModel>(context).mainColor,
                                     side: BorderSide(
-                                      color:Provider.of<ColorModel>(context).bodyColor1,
+                                      color:Provider.of<ColorModel>(context).mainColor,
                                       width: 1
                                     )
                                   ),

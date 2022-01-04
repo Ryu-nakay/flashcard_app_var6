@@ -7,14 +7,14 @@ import 'package:provider/provider.dart';
 
 Widget CardItemList(Size size,CardList item,BuildContext context){
   return Container(
-    margin: EdgeInsets.only(
+    margin:const EdgeInsets.only(
       top: 10,
       left: 10,
       right: 10,
     ),
     width: size.width-20,
     decoration: BoxDecoration(
-      color: Provider.of<ColorModel>(context).textColor,
+      color: Provider.of<ColorModel>(context).mainColor,
       border: Border.all(),
       borderRadius: BorderRadius.circular(10),
     ),
@@ -24,13 +24,13 @@ Widget CardItemList(Size size,CardList item,BuildContext context){
       },
       leading: Icon(
         Icons.circle,
-        color:Provider.of<ColorModel>(context).bodyColor1 ,
+        color:Provider.of<ColorModel>(context).textInMainColor ,
       ),
       title: Text(
         item.name,
         style: TextStyle(
           fontSize: size.width*0.05,
-          color: Provider.of<ColorModel>(context).bodyColor1
+          color: Provider.of<ColorModel>(context).textInMainColor
         ),
       ),
       trailing: IconButton(
@@ -39,7 +39,7 @@ Widget CardItemList(Size size,CardList item,BuildContext context){
         }, 
         icon:Icon(
           Icons.more_vert,
-          color: Provider.of<ColorModel>(context).bodyColor1,
+          color: Provider.of<ColorModel>(context).textInMainColor,
         )
       ),
     )

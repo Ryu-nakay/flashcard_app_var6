@@ -40,6 +40,9 @@ class MyPage extends StatelessWidget{
             });
           }
           return Container(
+            width: size.width,
+            height: size.height,
+            color: Provider.of<ColorModel>(context).backgroundColor,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -50,7 +53,7 @@ class MyPage extends StatelessWidget{
                         padding: const EdgeInsets.all(20),
                         width: size.width-20,
                         decoration: BoxDecoration(
-                          color: Provider.of<ColorModel>(context).bodyColor1,
+                          color: Provider.of<ColorModel>(context).cardColor,
                           border:Border.all(),
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: const [
@@ -68,7 +71,8 @@ class MyPage extends StatelessWidget{
                               '総データ',
                               style: TextStyle(
                                 fontSize: size.width*0.05,
-                                fontWeight: FontWeight.bold
+                                fontWeight: FontWeight.bold,
+                                color: Provider.of<ColorModel>(context).cardTextColor
                               ),
                             ),
                             Row(
@@ -76,7 +80,12 @@ class MyPage extends StatelessWidget{
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('カード枚数:${allCardsCount}')
+                                    Text(
+                                      'カード枚数:${allCardsCount}',
+                                      style: TextStyle(
+                                        color: Provider.of<ColorModel>(context).cardTextColor
+                                      ),
+                                    )
                                   ],
                                 ),
                                 
@@ -87,17 +96,18 @@ class MyPage extends StatelessWidget{
                               height: size.width*0.6,
                               child: PieChart(
                                 dataMap: my_page_model.dataMap[0],
-                                animationDuration: Duration(milliseconds: 800),
+                                animationDuration: const Duration(milliseconds: 800),
                                 chartRadius: size.width*0.3,
-                                colorList: [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
+                                colorList: const [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
                                 centerText: '学習状況',
                                 centerTextStyle: TextStyle(
                                   fontSize: size.width*0.02,
-                                  color: Colors.black,
+                                  color: Provider.of<ColorModel>(context).cardTextColor,
                                 ),
                                 legendOptions: LegendOptions(
                                   legendTextStyle: TextStyle(
-                                    fontSize: size.width*0.02
+                                    fontSize: size.width*0.02,
+                                    color: Provider.of<ColorModel>(context).cardTextColor
                                   ),
                                 ),
                                 chartType: ChartType.ring,
@@ -107,7 +117,7 @@ class MyPage extends StatelessWidget{
                                   decimalPlaces: 0,
                                   chartValueStyle: TextStyle(
                                     fontWeight: FontWeight.normal,
-                                    color: Colors.black,
+                                    color: Provider.of<ColorModel>(context).cardTextColor,
                                     fontSize: size.width*0.02
                                   )
                                 ),
@@ -122,7 +132,7 @@ class MyPage extends StatelessWidget{
                           padding: const EdgeInsets.all(20),
                           width: size.width-20,
                           decoration: BoxDecoration(
-                            color: Provider.of<ColorModel>(context).bodyColor1,
+                            color: Provider.of<ColorModel>(context).cardColor,
                             border:Border.all(),
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: const [
@@ -140,7 +150,8 @@ class MyPage extends StatelessWidget{
                                 '${card_list_model.list[i].name}',
                                 style: TextStyle(
                                   fontSize: size.width*0.05,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                  color: Provider.of<ColorModel>(context).cardTextColor
                                 ),
                               ),
                               Row(
@@ -148,7 +159,12 @@ class MyPage extends StatelessWidget{
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('カード枚数:${card_list_model.list[i].cards.length}')
+                                      Text(
+                                        'カード枚数:${card_list_model.list[i].cards.length}',
+                                        style: TextStyle(
+                                          color: Provider.of<ColorModel>(context).cardTextColor
+                                        ),
+                                      )
                                     ],
                                   ),
                                   
@@ -159,17 +175,18 @@ class MyPage extends StatelessWidget{
                                 height: size.width*0.6,
                                 child: PieChart(
                                   dataMap: my_page_model.dataMap[i+1],
-                                  animationDuration: Duration(milliseconds: 800),
+                                  animationDuration: const Duration(milliseconds: 800),
                                   chartRadius: size.width*0.3,
-                                  colorList: [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
+                                  colorList: const [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
                                   centerText: '学習状況',
                                   centerTextStyle: TextStyle(
                                     fontSize: size.width*0.02,
-                                    color: Colors.black,
+                                    color: Provider.of<ColorModel>(context).cardTextColor,
                                   ),
                                   legendOptions: LegendOptions(
                                     legendTextStyle: TextStyle(
-                                      fontSize: size.width*0.02
+                                      fontSize: size.width*0.02,
+                                      color: Provider.of<ColorModel>(context).cardTextColor
                                     ),
                                   ),
                                   chartType: ChartType.ring,
@@ -179,7 +196,7 @@ class MyPage extends StatelessWidget{
                                     decimalPlaces: 0,
                                     chartValueStyle: TextStyle(
                                       fontWeight: FontWeight.normal,
-                                      color: Colors.black,
+                                      color: Provider.of<ColorModel>(context).cardTextColor,
                                       fontSize: size.width*0.02
                                     )
                                   ),
@@ -208,18 +225,23 @@ class MyPage extends StatelessWidget{
                           :null,
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: Provider.of<ColorModel>(context).textColor,
+                            color: Provider.of<ColorModel>(context).mainColor,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: Provider.of<ColorModel>(context).bodyColor1,
+                            primary: Provider.of<ColorModel>(context).textInMainColor,
                             side: BorderSide(
-                              color:Provider.of<ColorModel>(context).textColor,
+                              color:Provider.of<ColorModel>(context).mainColor,
                               width: 1
                             )
                           ),
                         ),
 
-                        Text('${my_page_model.cardPageIndex+1}/${card_list_model.list.length+1}'),
+                        Text(
+                          '${my_page_model.cardPageIndex+1}/${card_list_model.list.length+1}',
+                          style: TextStyle(
+                            color: Provider.of<ColorModel>(context).textColor
+                          ),
+                        ),
 
                         ElevatedButton(
                           onPressed:my_page_model.cardPageIndex+1!=card_list_model.list.length+1?
@@ -229,12 +251,12 @@ class MyPage extends StatelessWidget{
                           :null,
                           child: Icon(
                             Icons.arrow_forward_ios,
-                            color: Provider.of<ColorModel>(context).textColor,
+                            color: Provider.of<ColorModel>(context).mainColor,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: Provider.of<ColorModel>(context).bodyColor1,
+                            primary: Provider.of<ColorModel>(context).textInMainColor,
                             side: BorderSide(
-                              color:Provider.of<ColorModel>(context).textColor,
+                              color:Provider.of<ColorModel>(context).mainColor,
                               width: 1
                             )
                           ),

@@ -16,7 +16,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
                     Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(CardList(name:'',tableName: '',cards: [CardData(id: 0, front: '', frontMemo: '', back: '', backMemo: '', evaluation: 'average')]))));
                   }, 
-                  child: Text(
+                  child: const Text(
                     '手動',
                     style: TextStyle(
                       color: Colors.blue
@@ -56,7 +56,7 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
               onPressed: (){
                 Navigator.pop(context);
               },
-              child: Text(
+              child: const Text(
                 'Cancel',
                 style: TextStyle(
                   color: Colors.blue
