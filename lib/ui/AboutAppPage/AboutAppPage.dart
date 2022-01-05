@@ -134,7 +134,12 @@ class AboutAppPage extends StatelessWidget{
           
                             }
                             :null, 
-                            child: Text('適用'),
+                            child: Text(
+                              '適用',
+                              style: TextStyle(
+                                color: color_model.textColor
+                              ),
+                            ),
                             style: ElevatedButton.styleFrom(
                               primary: color_model.mainColor
                             ),

@@ -4,7 +4,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ColorModel extends ChangeNotifier{
-  List<String> colorList=['Light','Dark','Blue'];
+  List<String> colorList=['Light','Dark','Blue','Matrix'];
   String selectListColor='Light';
 
   ColorModel(){
@@ -57,6 +57,15 @@ class ColorModel extends ChangeNotifier{
       mainColor=Colors.black;
       textColor=Colors.white;
       textInMainColor=Colors.white;
+      cardColor=Colors.white;
+      cardTextColor=Colors.black;
+    }else if(colorMode=='Matrix'){
+      appbarColor1=Colors.black;
+      appbarTextColor=Colors.green;
+      backgroundColor=Color(0xFF15202B);
+      mainColor=Colors.black;
+      textColor=Colors.green;
+      textInMainColor=Colors.green;
       cardColor=Colors.white;
       cardTextColor=Colors.black;
     }else{

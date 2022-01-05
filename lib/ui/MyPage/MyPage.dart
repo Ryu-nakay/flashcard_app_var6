@@ -61,7 +61,7 @@ class MyPage extends StatelessWidget{
                               color:Colors.black26,
                               spreadRadius: 1,
                               blurRadius: 10,
-                              offset: Offset(20,20)
+                              offset: Offset(10,10)
                             )
                           ]
                         ),
