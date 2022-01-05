@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flashcard_app_ver6/model/colorModel.dart';
 import 'package:flashcard_app_ver6/model/cardListModel.dart';
@@ -42,6 +43,7 @@ class MakeAndEditPage extends StatelessWidget{
         body: Consumer<CardListModel>(builder: (context, card_list_model, child) {
           return Container(
             height: size.height,
+            color: Provider.of<ColorModel>(context).backgroundColor,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -56,7 +58,8 @@ class MakeAndEditPage extends StatelessWidget{
                         Text(
                           '名前：',
                           style: TextStyle(
-                            fontSize: size.width*0.03
+                            fontSize: size.width*0.03,
+                            color: Provider.of<ColorModel>(context).textColor,
                           ),
                         ),
                         Flexible(
@@ -76,6 +79,9 @@ class MakeAndEditPage extends StatelessWidget{
                               ),
                               border: OutlineInputBorder(),
                               hintText: '暗記カード名を入力',
+                              hintStyle: TextStyle(
+                                color: Provider.of<ColorModel>(context).textColor.withOpacity(0.4),
+                              ),
                               contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                             ),
                             controller: TextEditingController(text: inputItem.name),
@@ -149,7 +155,14 @@ class MakeAndEditPage extends StatelessWidget{
                                   )
                                 ),
                               ),
-                              Text('${Provider.of<MakeAndEditModel>(context).cardPageIndex+1}/${inputItem.cards.length}'),
+
+                              Text(
+                                '${Provider.of<MakeAndEditModel>(context).cardPageIndex+1}/${inputItem.cards.length}',
+                                style: TextStyle(
+                                  color: Provider.of<ColorModel>(context).textColor,
+                                ),
+                              ),
+
                               ElevatedButton(
                                 onPressed:
                                 make_and_edit_model.cardPageIndex==inputItem.cards.length-1?

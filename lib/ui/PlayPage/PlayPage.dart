@@ -46,6 +46,7 @@ class PlayPage extends StatelessWidget{
         int inputCardListIndex=card_list_model.list.indexOf(inputCardList);
         return Consumer<PlayModel>(builder: (context, play_model, child) {
           return Container(
+            color: Provider.of<ColorModel>(context).backgroundColor,
             child: Column(
               children: [
                 ExpandablePageView(

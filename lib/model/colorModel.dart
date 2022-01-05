@@ -16,6 +16,9 @@ class ColorModel extends ChangeNotifier{
     print(colorMode+';;;;');
   }
 
+  void resetSelectionColor(){
+    selectListColor=colorMode;
+  }
 
   void changeColorPicker(index){
     selectListColor=colorList[index];
