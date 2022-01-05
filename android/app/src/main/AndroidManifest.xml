@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flashcard_app_ver6">
    <application
-        android:label="flashcard_app_ver6"
+        android:label="memorize cards"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
