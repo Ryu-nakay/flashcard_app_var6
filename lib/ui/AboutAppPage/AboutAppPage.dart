@@ -137,7 +137,7 @@ class AboutAppPage extends StatelessWidget{
                             child: Text(
                               '適用',
                               style: TextStyle(
-                                color: color_model.textColor
+                                color: color_model.textInMainColor
                               ),
                             ),
                             style: ElevatedButton.styleFrom(
