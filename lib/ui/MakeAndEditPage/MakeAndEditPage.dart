@@ -260,8 +260,24 @@ class MakeAndEditPage extends StatelessWidget{
                                 :const BoxDecoration(),
                                 child: ElevatedButton(
                                   onPressed: inputItem.name!='' ?
-                                  (){
+                                  () async {
                                     Navigator.pop(context);
+                                    //ローディングのアイコンを表示(画面タップでも消えない・操作を受け付けない)
+                                    showDialog(
+                                      barrierDismissible: false,  
+                                      context: context,
+                                      builder: (context) {
+                                        return const Center(
+                                          child: SizedBox(
+                                            width: 30,
+                                            height: 30,
+                                            child: CircularProgressIndicator(
+                                              
+                                            )
+                                          ),
+                                        );
+                                      },
+                                    );
                                     make_and_edit_model.cardPageIndex=0;
                                     
                                     List<CardData> deleteList=[];
@@ -286,7 +302,9 @@ class MakeAndEditPage extends StatelessWidget{
                                         card_list_model.updateFC(inputItem);
                                       }
 
-                                      card_list_model.getDBdata();
+                                      await card_list_model.getDBdata();
+
+                                      Navigator.pop(context);
 
                                       showDialog(
                                         context: context,
@@ -309,6 +327,7 @@ class MakeAndEditPage extends StatelessWidget{
                                         },
                                       );
                                     }else{
+                                      Navigator.pop(context);
                                       //ポップアップ
                                       showDialog(
                                         context: context,

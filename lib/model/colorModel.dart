@@ -25,10 +25,10 @@ class ColorModel extends ChangeNotifier{
     notifyListeners();
   }
 
-  void changeColorMode(){
+  Future<void> changeColorMode() async {
     colorMode=selectListColor;
     applyColor();
-    updateColorDB();
+    await updateColorDB();
   }
 
   void applyColor(){

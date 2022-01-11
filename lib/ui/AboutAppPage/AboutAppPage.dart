@@ -103,7 +103,9 @@ class AboutAppPage extends StatelessWidget{
                                             onSelectedItemChanged: (index) {
                                               color_model.changeColorPicker(index);
                                             },
-          
+                                            scrollController: FixedExtentScrollController(
+                                              initialItem: color_model.colorList.indexOf(color_model.colorMode)
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -129,9 +131,25 @@ class AboutAppPage extends StatelessWidget{
                           
                           ElevatedButton(
                             onPressed:color_model.selectListColor!=color_model.colorMode? 
-                            (){
-                              color_model.changeColorMode();
-          
+                            () async {
+                              //ローディングのアイコンを表示(画面タップでも消えない・操作を受け付けない)
+                              showDialog(
+                                barrierDismissible: false,  
+                                context: context,
+                                builder: (context) {
+                                  return const Center(
+                                    child: SizedBox(
+                                      width: 30,
+                                      height: 30,
+                                      child: CircularProgressIndicator(
+                                        
+                                      )
+                                    ),
+                                  );
+                                },
+                              );
+                              await color_model.changeColorMode();
+                              Navigator.pop(context);
                             }
                             :null, 
                             child: Text(
