@@ -191,6 +191,7 @@ class CardListModel extends ChangeNotifier{
       String tempEvaluation=item.evaluation==''?'average':item.evaluation;
       db.rawQuery('INSERT INTO '+tempCardList.tableName+'(front,frontMemo,back,backMemo,evaluation) VALUES('+'\''+item.front.toString()+'\',\''  +item.frontMemo.toString()+'\',\'' +item.back.toString()+'\',\'' +item.backMemo.toString()+'\',\'' +tempEvaluation+'\''+')');
     }
+    db.rawQuery('UPDATE FlashCardTable SET name=\'${tempCardList.name}\' WHERE tableName=\'${tempCardList.tableName}\'');
     print('updateFC() was done\n\n\n\n\n\n\n\n');
   }
 
