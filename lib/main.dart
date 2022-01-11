@@ -8,6 +8,7 @@ import 'package:flashcard_app_ver6/ui/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +52,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
       ),
+      localizationsDelegates: L10n.localizationsDelegates, // これ！
+      supportedLocales: L10n.supportedLocales,// これ！
       home:HomePage(),
     );
   }
