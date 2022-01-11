@@ -266,9 +266,6 @@ class PlayPage extends StatelessWidget{
                         ],
                       ),
                     ),
-                  
-                  
-                  
                   ],
                 ),
               ),

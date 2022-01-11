@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutAppPage extends StatelessWidget{
   @override
@@ -19,7 +20,7 @@ class AboutAppPage extends StatelessWidget{
             }, 
             icon: const Icon(Icons.arrow_back_ios)
           ),
-          title:const Text('Settings'),
+          title:Text(L10n.of(context)!.settings),
           centerTitle: true,
           backgroundColor: Provider.of<ColorModel>(context).appbarColor1,
         ),
@@ -49,7 +50,7 @@ class AboutAppPage extends StatelessWidget{
                   child: Column(
                     children: [
                       Text(
-                        'テーマ変更',
+                        L10n.of(context)!.theme_change,
                         style: TextStyle(
                           color: color_model.cardTextColor,
                           fontWeight: FontWeight.bold
@@ -61,13 +62,13 @@ class AboutAppPage extends StatelessWidget{
                           Column(
                             children: [
                               Text(
-                                '現在のカラー:${color_model.colorMode}',
+                                '${L10n.of(context)!.current_color}${color_model.colorMode}',
                                 style: TextStyle(
                                   color: Provider.of<ColorModel>(context).cardTextColor
                                 ),
                               ),
                               Text(
-                                '変更予定の色:${color_model.selectListColor}',
+                                '${L10n.of(context)!.color_to_be_chaged}${color_model.selectListColor}',
                                 style: TextStyle(
                                   color:color_model.cardTextColor 
                                 ),
@@ -86,7 +87,7 @@ class AboutAppPage extends StatelessWidget{
                                     child: Column(
                                       children: [
                                         TextButton(
-                                          child: const Text('閉じる'),
+                                          child: Text(L10n.of(context)!.close),
                                           onPressed: () => Navigator.of(context).pop(),
                                         ),
                                         const Divider(),
@@ -114,7 +115,7 @@ class AboutAppPage extends StatelessWidget{
                                 });
                             }, 
                             child: Text(
-                              '色を選択',
+                              L10n.of(context)!.choose_a_color,
                               style: TextStyle(
                                 color: color_model.textInMainColor
                               ),
@@ -153,7 +154,7 @@ class AboutAppPage extends StatelessWidget{
                             }
                             :null, 
                             child: Text(
-                              '適用',
+                              L10n.of(context)!.apply,
                               style: TextStyle(
                                 color: color_model.textInMainColor
                               ),
@@ -189,7 +190,7 @@ class AboutAppPage extends StatelessWidget{
                   child: Column(
                     children: [
                       Text(
-                        'アプリの意見や感想、バグの報告はこちら',
+                        L10n.of(context)!.click_here_for__app_opinions_impressions_and_bug_reports,
                         style: TextStyle(
                           color: color_model.cardTextColor,
                           fontWeight: FontWeight.bold
@@ -199,7 +200,7 @@ class AboutAppPage extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '製作者 Twitter: ',
+                            L10n.of(context)!.producer_s_twitter,
                             style: TextStyle(
                               color: color_model.cardTextColor
                             ),
@@ -218,11 +219,11 @@ class AboutAppPage extends StatelessWidget{
                                       return Theme(
                                         data: ThemeData.light(),
                                         child: CupertinoAlertDialog(
-                                          title:const Text("Twitterを開くことができませんでした"),
-                                          content:const Text("何らかの不具合が生じ失敗しました。\n良い通信環境で再度お試しください。"),
+                                          title:Text(L10n.of(context)!.could_not_open_twitter),
+                                          content:Text(L10n.of(context)!.something_went_wrong_and_it_failed_Please_try_again_in_a_good_communication_environment),
                                           actions: <Widget>[
                                             CupertinoDialogAction(
-                                              child:const Text("OK"),
+                                              child: Text(L10n.of(context)!.ok),
                                               onPressed: (){
                                                 Navigator.pop(context);
                                               },

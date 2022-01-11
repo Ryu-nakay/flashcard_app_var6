@@ -8,7 +8,12 @@ Future<dynamic> MakeCardListModalPopup(BuildContext context,Size size){
   return showCupertinoModalPopup(
           context: context, 
           builder: (BuildContext context)=>CupertinoActionSheet(
-            title: Text('暗記カードの作成方法を選択',style: TextStyle(fontSize: size.width*0.04)),
+            title: Text(
+              '暗記カードの作成方法を選択',
+              style: TextStyle(
+                fontSize: size.width*0.04
+              )
+            ),
             actions: [
               Consumer<CardListModel>(builder: (context, card_list_model, child) {
                 return CupertinoActionSheetAction(

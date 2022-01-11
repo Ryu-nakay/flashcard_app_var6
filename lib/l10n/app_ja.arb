@@ -1,7 +1,107 @@
 {
-  "@@locale": "ja",
+    "@@locale": "ja",
 
-  "face": "顔",
-  "eyes": "目",
-  "hello": "こんにちは"
+
+    "playModal":"",
+
+    "number_of_cards":"カード数：{cards_count}枚",
+    "@number_of_cards":{
+      "placeholders":{
+          "cards_count":{}
+      }
+    },
+    "front_to_back":"おもて→うら",
+    "back_to_front":"うら→おもて",
+    "random":"ランダム",
+    "in_order":"順番通り",
+    "start":"スタート",
+
+
+
+
+    "makeCardListModalPopup":"",
+
+    "select_how_to_create_a_memorization_card":"暗記カードの作成方法を選択",
+    "manual":"手動",
+    "cancel_en":"Cancel",
+
+
+
+    "cardItemListModalPopup":"",
+
+    "select_an_operation":"操作を選択",
+    "edit_memorization_card":"暗記カードを編集",
+    "delete_are_you_sure_you_want_to":"削除してもよろしいですか？",
+    "cannot_be_restored":"復元することはできません。",
+    "delete":"削除",
+    "cancel":"キャンセル",
+
+    
+    "cardItemList":"",
+
+
+
+    "aboutAppPage":"",
+
+    "settings":"setting",
+    "theme_change":"テーマ変更",
+    "current_color":"現在のカラー",
+    "color_to_be_chaged":"変更予定の色",
+    "close":"閉じる",
+    "choose_a_color":"色を選択",
+    "apply":"適用",
+    "click_here_for__app_opinions_impressions_and_bug_reports":"アプリの意見や感想、バグの報告はこちら",
+    "producer_s_twitter":"製作者 Twitter: ",
+    "could_not_open_twitter":"Twitterを開くことができませんでした",
+    "something_went_wrong_and_it_failed_Please_try_again_in_a_good_communication_environment":"何らかの不具合が生じ失敗しました。\n良い通信環境で再度お試しください。",
+    "ok":"OK",
+
+
+    "inputCard":"",
+
+    "front":"おもて:",
+    "enter_the_word_to_be_displayed_on_the_front":"おもてに表示する単語を入力",
+    "front_memo":"おもてメモ:",
+    "enter_the_word_to_be_displayed_on_the_front_memo":"おもてメモに表示するメモを入力",
+    "back":"うら:",
+    "enter_the_word_to_be_displayed_on_the_back":"うらに表示する単語を入力",
+    "back_memo":"うらメモ:",
+    "enter_the_word_to_be_displayed_on_the_back_memo":"うらメモに表示するメモを入力",
+
+
+    "makeAndEditPage":"",
+
+    "create_and_edit":"作成・編集",
+    "name":"名前:",
+    "enter_the_memorization_card_name":"暗記カード名を入力",
+    "saved_the_memorization_card":"{memorization_card_name}を保存しました。",
+    "@saved_the_memorization_card":{
+        "placeholders":{
+            "memorization_card_name":{}
+        }
+    },
+    "could_not_save":"保存できませんでした。",
+    "you_need_at_least_one_non_blank_card":"白紙でないカードが1枚以上必要です。",
+    "save_and_return":"セーブして戻る",
+
+
+    "myPage":"",
+
+    "my_page":"My page",
+    "good":"おぼえた",
+    "average":"ふつう",
+    "poor":"わからない",
+    "total_data":"総データ",
+    "learning_situation":"学習状況",
+
+
+    "playCard":"",
+
+    "enter_memo":"メモを入力",
+
+
+    "playPage":"",
+
+    "learning_level":"学習レベル"
+
 }
