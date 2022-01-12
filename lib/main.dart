@@ -7,11 +7,13 @@ import 'package:flashcard_app_ver6/model/playModel.dart';
 import 'package:flashcard_app_ver6/ui/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   //向き指定
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,//縦固定

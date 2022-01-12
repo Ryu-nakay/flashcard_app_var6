@@ -87,9 +87,9 @@
     "myPage":"",
 
     "my_page":"My page",
-    "good":"GOOD",
-    "average":"AVERAGE",
-    "poor":"POOR",
+    "good":"〇",
+    "average":"△",
+    "poor":"✕",
     "total_data":"TOTAL DATA",
     "learning_situation":"Learning\nsituation",
 
