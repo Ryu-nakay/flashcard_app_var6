@@ -9,6 +9,7 @@ import 'package:flashcard_app_ver6/ui/PlayPage/PlayCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PlayPage extends StatelessWidget{
   CardList inputCardList;
@@ -132,7 +133,7 @@ class PlayPage extends StatelessWidget{
                       child: Column(
                         children: [
                           Text(
-                            '学習レベル',
+                            L10n.of(context)!.learning_level,
                             style: TextStyle(
                               color: Provider.of<ColorModel>(context).textColor
                             ),
@@ -157,7 +158,7 @@ class PlayPage extends StatelessWidget{
                                     card_list_model.updateCardDataMemoAndEva(card_list_model.list[inputCardListIndex].tableName, card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]]);
                                   }, 
                                   child: Text(
-                                    'わからない',
+                                    L10n.of(context)!.poor,
                                     style: 
                                     TextStyle(
                                       color: card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='poor'? 
@@ -198,7 +199,7 @@ class PlayPage extends StatelessWidget{
                                     card_list_model.updateCardDataMemoAndEva(card_list_model.list[inputCardListIndex].tableName, card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]]);
                                   }, 
                                   child: Text(
-                                    'ふつう',
+                                    L10n.of(context)!.average,
                                     style: TextStyle(
                                       color: card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='average'? 
                                       Provider.of<ColorModel>(context).mainColor
@@ -239,7 +240,7 @@ class PlayPage extends StatelessWidget{
                                     card_list_model.updateCardDataMemoAndEva(card_list_model.list[inputCardListIndex].tableName, card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]]);
                                   }, 
                                   child: Text(
-                                    'おぼえた',
+                                    L10n.of(context)!.good,
                                     style:TextStyle(
                                       color: card_list_model.list[inputCardListIndex].cards[indexList[play_model.cardPageIndex]].evaluation!='good'? 
                                       Provider.of<ColorModel>(context).mainColor

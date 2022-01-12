@@ -88,9 +88,9 @@
     "myPage":"",
 
     "my_page":"My page",
-    "good":"おぼえた",
-    "average":"ふつう",
-    "poor":"わからない",
+    "good":"〇",
+    "average":"△",
+    "poor":"✕",
     "total_data":"総データ",
     "learning_situation":"学習状況",
 

@@ -5,6 +5,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
   return Consumer<PlayModel>(builder: (context, play_model, child) {
@@ -66,7 +67,7 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
                             )
                           ),
                           border: const OutlineInputBorder(),
-                          hintText: 'メモを入力',
+                          hintText: L10n.of(context)!.enter_memo,
                           contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                         ),
                         controller: TextEditingController(
@@ -139,7 +140,7 @@ Widget PlayCard(Size size,CardList inputCardList,CardData inputCard){
                             )
                           ),
                           border: const OutlineInputBorder(),
-                          hintText: 'メモを入力',
+                          hintText: L10n.of(context)!.enter_memo,
                           contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                         ),
                         controller: TextEditingController(

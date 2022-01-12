@@ -3,37 +3,37 @@
 
   "playModal":"",
 
-    "number_of_cards":"カード数：{cards_count}枚",
+    "number_of_cards":"Number of cards: {cards_count}",
     "@number_of_cards":{
       "placeholders":{
           "cards_count":{}
       }
     },
-    "front_to_back":"おもて→うら",
-    "back_to_front":"うら→おもて",
-    "random":"ランダム",
-    "in_order":"順番通り",
-    "start":"スタート",
+    "front_to_back":"Front→Back",
+    "back_to_front":"Back→Front",
+    "random":"Random",
+    "in_order":"In order",
+    "start":"START",
 
 
 
 
     "makeCardListModalPopup":"",
 
-    "select_how_to_create_a_memorization_card":"暗記カードの作成方法を選択",
-    "manual":"手動",
+    "select_how_to_create_a_memorization_card":"Select how to create a memorization card",
+    "manual":"Manual",
     "cancel_en":"Cancel",
 
 
 
     "cardItemListModalPopup":"",
 
-    "select_an_operation":"操作を選択",
-    "edit_memorization_card":"暗記カードを編集",
-    "delete_are_you_sure_you_want_to":"削除してもよろしいですか？",
-    "cannot_be_restored":"復元することはできません。",
-    "delete":"削除",
-    "cancel":"キャンセル",
+    "select_an_operation":"Select an operation",
+    "edit_memorization_card":"Edit memorization card",
+    "delete_are_you_sure_you_want_to":"Delete are you sure want to?",
+    "cannot_be_restored":"Cannot be restored.",
+    "delete":"Delete",
+    "cancel":"Cnacel",
 
     
     "cardItemList":"",
@@ -58,48 +58,48 @@
 
     "inputCard":"",
 
-    "front":"おもて:",
-    "enter_the_word_to_be_displayed_on_the_front":"おもてに表示する単語を入力",
-    "front_memo":"おもてメモ:",
-    "enter_the_word_to_be_displayed_on_the_front_memo":"おもてメモに表示するメモを入力",
-    "back":"うら:",
-    "enter_the_word_to_be_displayed_on_the_back":"うらに表示する単語を入力",
-    "back_memo":"うらメモ:",
-    "enter_the_word_to_be_displayed_on_the_back_memo":"うらメモに表示するメモを入力",
+    "front":"front:",
+    "enter_the_word_to_be_displayed_on_the_front":"Enter the word to be displayed on the front",
+    "front_memo":"front memo:",
+    "enter_the_word_to_be_displayed_on_the_front_memo":"Enter the word to be displayed on the front memo",
+    "back":"back:",
+    "enter_the_word_to_be_displayed_on_the_back":"Enter the word to be displayed on the back",
+    "back_memo":"back memo:",
+    "enter_the_word_to_be_displayed_on_the_back_memo":"Enter the word to be displayed on the back memo",
 
 
     "makeAndEditPage":"",
 
-    "create_and_edit":"作成・編集",
-    "name":"名前:",
-    "enter_the_memorization_card_name":"暗記カード名を入力",
-    "saved_the_memorization_card":"{memorization_card_name}を保存しました。",
+    "create_and_edit":"Create/Edit",
+    "name":"name:",
+    "enter_the_memorization_card_name":"Enter the memorization card name",
+    "saved_the_memorization_card":"Saved the {memorization_card_name}",
     "@saved_the_memorization_card":{
         "placeholders":{
             "memorization_card_name":{}
         }
     },
-    "could_not_save":"保存できませんでした。",
-    "you_need_at_least_one_non_blank_card":"白紙でないカードが1枚以上必要です。",
-    "save_and_return":"セーブして戻る",
+    "could_not_save":"Could not save.",
+    "you_need_at_least_one_non_blank_card":"You need at least one non-blank card.",
+    "save_and_return":"Save and Return.",
 
 
     "myPage":"",
 
     "my_page":"My page",
-    "good":"おぼえた",
-    "average":"ふつう",
-    "poor":"わからない",
-    "total_data":"総データ",
-    "learning_situation":"学習状況",
+    "good":"GOOD",
+    "average":"AVERAGE",
+    "poor":"POOR",
+    "total_data":"TOTAL DATA",
+    "learning_situation":"Learning\nsituation",
 
 
     "playCard":"",
 
-    "enter_memo":"メモを入力",
+    "enter_memo":"Enter memo",
 
 
     "playPage":"",
 
-    "learning_level":"学習レベル"
+    "learning_level":"Learning level"
 }

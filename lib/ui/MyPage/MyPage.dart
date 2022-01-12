@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyPage extends StatelessWidget{
   @override
@@ -14,7 +15,7 @@ class MyPage extends StatelessWidget{
     int allCardsCount=Provider.of<CardListModel>(context).allCardsLength();
     return Scaffold(
       appBar: AppBar(
-        title:const Text('My page'),
+        title:Text(L10n.of(context)!.my_page),
         centerTitle: true,
         backgroundColor: Provider.of<ColorModel>(context).appbarColor1,
         leading: IconButton(
@@ -28,15 +29,15 @@ class MyPage extends StatelessWidget{
       body:Consumer<CardListModel>(builder: (context, card_list_model, child) {
         return Consumer<MyPageModel>(builder: (context, my_page_model, child) {
           my_page_model.dataMap.add({
-            'おぼえた':card_list_model.allGoodLength().toDouble(),
-            'ふつう':card_list_model.allAverageLength().toDouble(),
-            'わからない':card_list_model.allPoorLength().toDouble(),
+            L10n.of(context)!.good:card_list_model.allGoodLength().toDouble(),
+            L10n.of(context)!.average:card_list_model.allAverageLength().toDouble(),
+            L10n.of(context)!.poor:card_list_model.allPoorLength().toDouble(),
           });
           for (var item in card_list_model.list) {
             my_page_model.dataMap.add({
-              'おぼえた':card_list_model.goodCount(item).toDouble(),
-              'ふつう':card_list_model.averageCount(item).toDouble(),
-              'わからない':card_list_model.poorCount(item).toDouble(),
+              L10n.of(context)!.good:card_list_model.goodCount(item).toDouble(),
+              L10n.of(context)!.average:card_list_model.averageCount(item).toDouble(),
+              L10n.of(context)!.poor:card_list_model.poorCount(item).toDouble(),
             });
           }
           return Container(
@@ -68,7 +69,7 @@ class MyPage extends StatelessWidget{
                         child: Column(
                           children: [
                             Text(
-                              '総データ',
+                              L10n.of(context)!.total_data,
                               style: TextStyle(
                                 fontSize: size.width*0.05,
                                 fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class MyPage extends StatelessWidget{
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'カード枚数:${allCardsCount}',
+                                      L10n.of(context)!.number_of_cards(allCardsCount),
                                       style: TextStyle(
                                         color: Provider.of<ColorModel>(context).cardTextColor
                                       ),
@@ -99,7 +100,7 @@ class MyPage extends StatelessWidget{
                                 animationDuration: const Duration(milliseconds: 800),
                                 chartRadius: size.width*0.3,
                                 colorList: const [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
-                                centerText: '学習状況',
+                                centerText: L10n.of(context)!.learning_situation,
                                 centerTextStyle: TextStyle(
                                   fontSize: size.width*0.02,
                                   color: Provider.of<ColorModel>(context).cardTextColor,
@@ -160,7 +161,7 @@ class MyPage extends StatelessWidget{
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'カード枚数:${card_list_model.list[i].cards.length}',
+                                        L10n.of(context)!.number_of_cards(card_list_model.list[i].cards.length),
                                         style: TextStyle(
                                           color: Provider.of<ColorModel>(context).cardTextColor
                                         ),
@@ -178,7 +179,7 @@ class MyPage extends StatelessWidget{
                                   animationDuration: const Duration(milliseconds: 800),
                                   chartRadius: size.width*0.3,
                                   colorList: const [Color(0xFF99FF99),Color(0xFFFFFF99),Color(0xFFFF82B2)],
-                                  centerText: '学習状況',
+                                  centerText: L10n.of(context)!.learning_situation,
                                   centerTextStyle: TextStyle(
                                     fontSize: size.width*0.02,
                                     color: Provider.of<ColorModel>(context).cardTextColor,

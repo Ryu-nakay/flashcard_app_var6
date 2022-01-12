@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MakeAndEditPage extends StatelessWidget{
   CardList inputItem;
@@ -32,7 +33,7 @@ class MakeAndEditPage extends StatelessWidget{
           backgroundColor: Provider.of<ColorModel>(context).appbarColor1,
           centerTitle: true,
           title: Text(
-            '作成・編集',
+            L10n.of(context)!.create_and_edit,
             style: TextStyle(
               color: Provider.of<ColorModel>(context).appbarTextColor,
               fontSize: AppBar().preferredSize.height*0.3
@@ -56,7 +57,7 @@ class MakeAndEditPage extends StatelessWidget{
                     child: Row(
                       children: [
                         Text(
-                          '名前：',
+                          L10n.of(context)!.name,
                           style: TextStyle(
                             fontSize: size.width*0.03,
                             color: Provider.of<ColorModel>(context).textColor,
@@ -78,7 +79,7 @@ class MakeAndEditPage extends StatelessWidget{
                                 )
                               ),
                               border: OutlineInputBorder(),
-                              hintText: '暗記カード名を入力',
+                              hintText: L10n.of(context)!.enter_the_memorization_card_name,
                               hintStyle: TextStyle(
                                 color: Provider.of<ColorModel>(context).textColor.withOpacity(0.4),
                               ),
@@ -229,7 +230,7 @@ class MakeAndEditPage extends StatelessWidget{
                                     
                                   }, 
                                   child:Text(
-                                    'キャンセル',
+                                    L10n.of(context)!.cancel,
                                     style: TextStyle(
                                       color: Provider.of<ColorModel>(context).textInMainColor
                                     ),
@@ -312,11 +313,11 @@ class MakeAndEditPage extends StatelessWidget{
                                           return Theme(
                                             data: ThemeData.light(),
                                             child: CupertinoAlertDialog(
-                                              title:Text("${inputItem.name}を保存しました。"),
+                                              title:Text(L10n.of(context)!.saved_the_memorization_card(inputItem.name)),
                                               content:const Text(""),
                                               actions: <Widget>[
                                                 CupertinoDialogAction(
-                                                  child:const Text("OK"),
+                                                  child:Text(L10n.of(context)!.ok),
                                                   onPressed: (){
                                                     Navigator.pop(context);
                                                   },
@@ -333,11 +334,11 @@ class MakeAndEditPage extends StatelessWidget{
                                         context: context,
                                         builder: (context) {
                                           return CupertinoAlertDialog(
-                                            title:const Text("保存できませんでした"),
-                                            content:const Text("白紙でないカードが1枚以上必要です。"),
+                                            title:Text(L10n.of(context)!.could_not_save),
+                                            content:Text(L10n.of(context)!.you_need_at_least_one_non_blank_card),
                                             actions: <Widget>[
                                               CupertinoDialogAction(
-                                                child:const Text("OK"),
+                                                child:Text(L10n.of(context)!.ok),
                                                 onPressed: (){
                                                   Navigator.pop(context);
                                                 },
@@ -347,14 +348,11 @@ class MakeAndEditPage extends StatelessWidget{
                                         },
                                       );
                                     }
-
-                                    
-                                    
                                   }
                                   :
                                   null, 
                                   child: Text(
-                                    'セーブして戻る',
+                                    L10n.of(context)!.save_and_return,
                                     style: TextStyle(
                                       color: Provider.of<ColorModel>(context).textInMainColor
                                     ),
@@ -371,13 +369,9 @@ class MakeAndEditPage extends StatelessWidget{
                             ],
                           ),
                         ),
-
-                        
                       ],
                     );
                   })
-                  
-                  
                 ],
               ),
             ),

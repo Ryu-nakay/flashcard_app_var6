@@ -7,6 +7,7 @@ import 'package:flashcard_app_ver6/ui/PlayPage/PlayPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 List<int> shuffle(List<int> items) {
     var random =  Random();
@@ -58,7 +59,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                               ),
                             ),
                             Text(
-                              'カード数：'+item.cards.length.toString()+'枚',
+                              L10n.of(context)!.number_of_cards(item.cards.length),
                               style: TextStyle(
                                 fontSize: size.width*0.05,
                                 color: Provider.of<ColorModel>(context).textColor
@@ -75,7 +76,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                         child: Column(
                           children: [
                             Text(
-                              play_model.modeflag==true?'おもて→うら':'うら→おもて',
+                              play_model.modeflag==true?L10n.of(context)!.front_to_back:L10n.of(context)!.back_to_front,
                               style: TextStyle(
                                 color: Provider.of<ColorModel>(context).textColor
                               ),
@@ -110,7 +111,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                         ),
                         child: Column(
                           children: [
-                            Text(play_model.randomflag==true?'ランダム':'順番通り'),
+                            Text(play_model.randomflag==true?L10n.of(context)!.random:L10n.of(context)!.in_order),
                             Container(
                               decoration:const BoxDecoration(
                                 boxShadow: [
@@ -166,7 +167,7 @@ Future<dynamic> PlaypModal(BuildContext context,Size size,CardList item){
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'スタート',
+                                  L10n.of(context)!.start,
                                   style: TextStyle(
                                     color: Provider.of<ColorModel>(context).textColor,
                                     fontSize: size.width*0.05

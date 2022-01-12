@@ -3,6 +3,7 @@ import 'package:flashcard_app_ver6/model/cardListModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 Widget InputCard(Size size,BuildContext context,CardData card){
@@ -32,7 +33,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
               Column(
                 children: [
                   Text(
-                    'おもて：',
+                    L10n.of(context)!.front,
                     style: TextStyle(
                       fontSize: size.width*0.03
                     ),
@@ -54,7 +55,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                           )
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'おもてに表示するを単語を入力',
+                        hintText: L10n.of(context)!.enter_the_word_to_be_displayed_on_the_front,
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
                       controller: TextEditingController(text:card.front),
@@ -69,7 +70,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
               Column(
                 children: [
                   Text(
-                    'おもてメモ：',
+                    L10n.of(context)!.front_memo,
                     style: TextStyle(
                       fontSize: size.width*0.03,
                     ),
@@ -91,7 +92,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                           )
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'おもてメモに表示するメモを入力',
+                        hintText: L10n.of(context)!.enter_the_word_to_be_displayed_on_the_front_memo,
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
                       controller:  TextEditingController(text:card.frontMemo),
@@ -130,7 +131,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
               Column(
                 children: [
                   Text(
-                    'うら：',
+                    L10n.of(context)!.back,
                     style: TextStyle(
                       fontSize: size.width*0.03
                     ),
@@ -152,7 +153,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                           )
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'うらに表示する単語を入力',
+                        hintText: L10n.of(context)!.enter_the_word_to_be_displayed_on_the_back,
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
                       controller:  TextEditingController(text:card.back),
@@ -167,7 +168,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
               Column(
                 children: [
                   Text(
-                    'うらメモ：',
+                    L10n.of(context)!.back_memo,
                     style: TextStyle(
                       fontSize: size.width*0.03
                     ),
@@ -189,7 +190,7 @@ Widget InputCard(Size size,BuildContext context,CardData card){
                           )
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'うらメモに表示するメモを入力',
+                        hintText: L10n.of(context)!.enter_the_word_to_be_displayed_on_the_back_memo,
                         contentPadding: EdgeInsets.only(top: 0,bottom: 0,left: 5)
                       ),
                       controller:  TextEditingController(text:card.backMemo),

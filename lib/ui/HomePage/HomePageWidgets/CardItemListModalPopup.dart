@@ -3,12 +3,13 @@ import 'package:flashcard_app_ver6/ui/MakeAndEditPage/MakeAndEditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList item){
   return showCupertinoModalPopup(
           context: context, 
           builder: (BuildContext context)=>CupertinoActionSheet(
-            title: Text('操作を選択',style: TextStyle(fontSize: size.width*0.04)),
+            title: Text(L10n.of(context)!.select_an_operation,style: TextStyle(fontSize: size.width*0.04)),
             actions: [
               Consumer<CardListModel>(builder: (context, card_list_model, child) {
                 return CupertinoActionSheetAction(
@@ -16,9 +17,9 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                     Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeAndEditPage(item.copyWith())));
                   }, 
-                  child:const Text(
-                    '暗記カードを編集',
-                    style: TextStyle(
+                  child:Text(
+                    L10n.of(context)!.edit_memorization_card,
+                    style: const TextStyle(
                       color: Colors.blue
                     ),
                   )
@@ -32,12 +33,12 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                     context: context,
                     builder: (context) {
                       return CupertinoAlertDialog(
-                        title:const Text("削除してもよろしいですか？"),
-                        content:const Text("復元することはできません。"),
+                        title:Text(L10n.of(context)!.delete_are_you_sure_you_want_to),
+                        content:Text(L10n.of(context)!.cannot_be_restored),
                         actions: <Widget>[
                           Consumer<CardListModel>(builder: (context, card_list_model, child) {
                             return CupertinoDialogAction(
-                              child:const Text("削除"),
+                              child:Text(L10n.of(context)!.delete),
                               isDestructiveAction: true,
                               onPressed: () {
                                 card_list_model.deleteCardList(item.tableName,card_list_model.list.indexOf(item));
@@ -47,7 +48,7 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                           }),
                           
                           CupertinoDialogAction(
-                            child:const Text("キャンセル"),
+                            child:Text(L10n.of(context)!.cancel),
                             onPressed: (){
                               Navigator.pop(context);
                             },
@@ -57,16 +58,16 @@ Future<dynamic> CardItemListModalPopup(BuildContext context,Size size,CardList i
                     },
                   );
                 },
-                child:const Text('削除',style: TextStyle(color: Colors.red))
+                child:Text(L10n.of(context)!.delete,style: TextStyle(color: Colors.red))
               )
             ],
             cancelButton: CupertinoActionSheetAction(
               onPressed: (){
                 Navigator.pop(context);
               },
-              child:const Text(
-                'Cancel',
-                style: TextStyle(
+              child:Text(
+                L10n.of(context)!.cancel_en,
+                style: const TextStyle(
                   color: Colors.blue
                 ),
               ),
