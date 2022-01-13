@@ -2,10 +2,16 @@ import 'dart:io';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+bool AD_TEST_FLAG=true;
+
 final BannerAd banner = BannerAd(
-  adUnitId: Platform.isAndroid
+  adUnitId:AD_TEST_FLAG? 
+  Platform.isAndroid
     ? 'ca-app-pub-3940256099942544/6300978111'
-    : 'ca-app-pub-3940256099942544/2934735716',
+    : 'ca-app-pub-3940256099942544/2934735716'
+  :Platform.isAndroid
+    ?'ca-app-pub-7890813071878910/4158368755'
+    :'ca-app-pub-7890813071878910/3093726760',
   size: AdSize.banner,
   request: AdRequest(),
   listener: BannerAdListener(),
