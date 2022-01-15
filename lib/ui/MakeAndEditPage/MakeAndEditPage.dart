@@ -60,12 +60,12 @@ class MakeAndEditPage extends StatelessWidget{
                           L10n.of(context)!.name,
                           style: TextStyle(
                             fontSize: size.width*0.03,
-                            color: Provider.of<ColorModel>(context).textInMainColor,
+                            color: Provider.of<ColorModel>(context).textColor,
                           ),
                         ),
                         Flexible(
                           child: TextFormField(
-                            cursorColor: Provider.of<ColorModel>(context).textInMainColor,
+                            cursorColor: Provider.of<ColorModel>(context).textColor,
                             decoration: InputDecoration(
                               enabledBorder:OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -81,13 +81,13 @@ class MakeAndEditPage extends StatelessWidget{
                               border: OutlineInputBorder(),
                               hintText: L10n.of(context)!.enter_the_memorization_card_name,
                               hintStyle: TextStyle(
-                                color: Provider.of<ColorModel>(context).textInMainColor.withOpacity(0.4),
+                                color: Provider.of<ColorModel>(context).textColor.withOpacity(0.4),
                               ),
                               contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 5)
                             ),
                             controller: TextEditingController(text: inputItem.name),
                             style: TextStyle(
-                              color: Provider.of<ColorModel>(context).textInMainColor
+                              color: Provider.of<ColorModel>(context).textColor
                             ),
                             onChanged: (value){
                               inputItem.name=value;
