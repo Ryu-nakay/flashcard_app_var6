@@ -1,0 +1,107 @@
+{
+    "@@locale": "es",
+
+
+    "playModal":"",
+
+    "number_of_cards":"Número de tarjetas: {cards_count}",
+    "@number_of_cards":{
+      "placeholders":{
+          "cards_count":{}
+      }
+    },
+    "front_to_back":"anverso→parte trasera",
+    "back_to_front":"parte trasera→anverso",
+    "random":"aleatorio",
+    "in_order":"En orden",
+    "start":"comienzo",
+
+
+
+
+    "makeCardListModalPopup":"",
+
+    "select_how_to_create_a_memorization_card":"Elige cómo crear una tarjeta de memorización",
+    "manual":"Manual",
+    "cancel_en":"Cancelar",
+
+
+
+    "cardItemListModalPopup":"",
+
+    "select_an_operation":"Seleccione una operación",
+    "edit_memorization_card":"Editar tarjeta de memorización",
+    "delete_are_you_sure_you_want_to":"Eliminar ¿Estás seguro de que quieres?",
+    "cannot_be_restored":"No se puede restaurar.",
+    "delete":"Borrar",
+    "cancel":"Cancelar",
+
+    
+    "cardItemList":"",
+
+
+
+    "aboutAppPage":"",
+
+    "settings":"ajuste",
+    "theme_change":"cambiar el tema",
+    "current_color":"color actual",
+    "color_to_be_chaged":"Color a cambiar",
+    "close":"de cerca",
+    "choose_a_color":"Elige un color",
+    "apply":"Solicitud",
+    "click_here_for__app_opinions_impressions_and_bug_reports":"Haga clic aquí para obtener opiniones, impresiones e informes de errores de la aplicación",
+    "producer_s_twitter":"Twitter del creador: ",
+    "could_not_open_twitter":"No se pudo abrir Twitter",
+    "something_went_wrong_and_it_failed_Please_try_again_in_a_good_communication_environment":"Algo salió mal y falló. \nVuelva a intentarlo en un buen entorno de comunicación.",
+    "ok":"OK",
+
+
+    "inputCard":"",
+
+    "front":"anverso:",
+    "enter_the_word_to_be_displayed_on_the_front":"Ingrese la palabra que se mostrará en el anverso",
+    "front_memo":"Nota del anverso:",
+    "enter_the_word_to_be_displayed_on_the_front_memo":"Ingrese la nota que se mostrará en el anverso",
+    "back":"parte trasera:",
+    "enter_the_word_to_be_displayed_on_the_back":"Haz las palabras para mostrar en la parte posterior.",
+    "back_memo":"Nota en la parte posterior:",
+    "enter_the_word_to_be_displayed_on_the_back_memo":"Ingrese la nota que se mostrará en el reverso",
+
+
+    "makeAndEditPage":"",
+
+    "create_and_edit":"Crear / Editar",
+    "name":"nombre:",
+    "enter_the_memorization_card_name":"Introduzca el nombre de la tarjeta de memorización",
+    "saved_the_memorization_card":"Guardado {memorization_card_name}.",
+    "@saved_the_memorization_card":{
+        "placeholders":{
+            "memorization_card_name":{}
+        }
+    },
+    "could_not_save":"No se pudo guardar.",
+    "you_need_at_least_one_non_blank_card":"Necesita al menos una tarjeta que no esté en blanco.",
+    "save_and_return":"Guardar y volver",
+
+
+    "myPage":"",
+
+    "my_page":"Mi página",
+    "good":"〇",
+    "average":"△",
+    "poor":"✕",
+    "total_data":"Datos totales",
+    "learning_situation":"situación de aprendizaje",
+
+
+    "playCard":"",
+
+    "enter_memo":"Introducir notas",
+
+
+    "playPage":"",
+
+    "learning_level":"Nivel de aprendizaje"
+
+}

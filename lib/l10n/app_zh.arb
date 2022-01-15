@@ -1,0 +1,107 @@
+{
+    "@@locale": "zh",
+
+
+    "playModal":"",
+
+    "number_of_cards":"卡片数量：{cards_count}",
+    "@number_of_cards":{
+      "placeholders":{
+          "cards_count":{}
+      }
+    },
+    "front_to_back":"前面→背面",
+    "back_to_front":"背面→前面",
+    "random":"随机的",
+    "in_order":"为了",
+    "start":"开始",
+
+
+
+
+    "makeCardListModalPopup":"",
+
+    "select_how_to_create_a_memorization_card":"选择如何创建记忆卡",
+    "manual":"手动的",
+    "cancel_en":"取消",
+
+
+
+    "cardItemListModalPopup":"",
+
+    "select_an_operation":"请选择一个操作",
+    "edit_memorization_card":"编辑记忆卡",
+    "delete_are_you_sure_you_want_to":"删除确定要删除吗？",
+    "cannot_be_restored":"它无法恢复。",
+    "delete":"删除",
+    "cancel":"取消",
+
+    
+    "cardItemList":"",
+
+
+
+    "aboutAppPage":"",
+
+    "settings":"环境",
+    "theme_change":"主题变化",
+    "current_color":"当前颜色",
+    "color_to_be_chaged":"要更改的颜色",
+    "close":"特写",
+    "choose_a_color":"选择一种颜色",
+    "apply":"应用",
+    "click_here_for__app_opinions_impressions_and_bug_reports":"单击此处查看应用意见、印象和错误报告",
+    "producer_s_twitter":"创作者的推特: ",
+    "could_not_open_twitter":"无法打开推特",
+    "something_went_wrong_and_it_failed_Please_try_again_in_a_good_communication_environment":"出了点问题，它失败了。 \n请在良好的通讯环境中重试。",
+    "ok":"行",
+
+
+    "inputCard":"",
+
+    "front":"前面:",
+    "enter_the_word_to_be_displayed_on_the_front":"输入要在前面显示的单词",
+    "front_memo":"正面备忘录:",
+    "enter_the_word_to_be_displayed_on_the_front_memo":"输入要在正面显示的备忘录",
+    "back":"背面:",
+    "enter_the_word_to_be_displayed_on_the_back":"输入要在背面显示的单词",
+    "back_memo":"背面备注:",
+    "enter_the_word_to_be_displayed_on_the_back_memo":"输入要在背面显示的备忘录",
+
+
+    "makeAndEditPage":"",
+
+    "create_and_edit":"创建/编辑",
+    "name":"名称:",
+    "enter_the_memorization_card_name":"请输入记忆卡名称",
+    "saved_the_memorization_card":"已保存 {memorization_card_name}。",
+    "@saved_the_memorization_card":{
+        "placeholders":{
+            "memorization_card_name":{}
+        }
+    },
+    "could_not_save":"无法保存。",
+    "you_need_at_least_one_non_blank_card":"您至少需要一张非空白卡。",
+    "save_and_return":"保存并返回",
+
+
+    "myPage":"",
+
+    "my_page":"我的页面",
+    "good":"〇",
+    "average":"△",
+    "poor":"✕",
+    "total_data":"总数据",
+    "learning_situation":"学习情况",
+
+
+    "playCard":"",
+
+    "enter_memo":"请输入备注",
+
+
+    "playPage":"",
+
+    "learning_level":"学习水平"
+
+}
