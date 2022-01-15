@@ -1,0 +1,107 @@
+{
+    "@@locale": "hi",
+
+
+    "playModal":"",
+
+    "number_of_cards":"कार्डों की संख्या: {cards_count}",
+    "@number_of_cards":{
+      "placeholders":{
+          "cards_count":{}
+      }
+    },
+    "front_to_back":"सामने की ओर→पीछे की ओर",
+    "back_to_front":"पीछे की ओर→सामने की ओर",
+    "random":"यादृच्छिक रूप से",
+    "in_order":"क्रम में",
+    "start":"शुरु",
+
+
+
+
+    "makeCardListModalPopup":"",
+
+    "select_how_to_create_a_memorization_card":"याद रखने वाला कार्ड बनाने का तरीका चुनें",
+    "manual":"हाथ से किया हुआ",
+    "cancel_en":"रद्द करें",
+
+
+
+    "cardItemListModalPopup":"",
+
+    "select_an_operation":"कृपया एक ऑपरेशन चुनें",
+    "edit_memorization_card":"यादगार कार्ड संपादित करें",
+    "delete_are_you_sure_you_want_to":"हटाएं क्या आप वाकई चाहते हैं",
+    "cannot_be_restored":"इसे बहाल नहीं किया जा सकता है।",
+    "delete":"हटाएं",
+    "cancel":"रद्द करें",
+
+    
+    "cardItemList":"",
+
+
+
+    "aboutAppPage":"",
+
+    "settings":"स्थापना",
+    "theme_change":"थीम परिवर्तन",
+    "current_color":"वर्तमान रंग",
+    "color_to_be_chaged":"रंग बदलना होगा",
+    "close":"क्लोज़ अप",
+    "choose_a_color":"कोई रंग चुनें",
+    "apply":"आवेदन",
+    "click_here_for__app_opinions_impressions_and_bug_reports":"ऐप राय, इंप्रेशन और बग रिपोर्ट के लिए यहां क्लिक करें",
+    "producer_s_twitter":"निर्माता का ट्विटर: ",
+    "could_not_open_twitter":"ट्विटर नहीं खोल सका",
+    "something_went_wrong_and_it_failed_Please_try_again_in_a_good_communication_environment":"कुछ गलत हो गया और यह विफल हो गया। \nकृपया एक अच्छे संचार वातावरण में पुन: प्रयास करें।",
+    "ok":"ठीक है",
+
+
+    "inputCard":"",
+
+    "front":"सामने की ओर:",
+    "enter_the_word_to_be_displayed_on_the_front":"सामने की तरफ प्रदर्शित होने वाला शब्द दर्ज करें",
+    "front_memo":"फ्रंट साइड मेमो:",
+    "enter_the_word_to_be_displayed_on_the_front_memo":"सामने की तरफ प्रदर्शित होने वाला मेमो दर्ज करें",
+    "back":"पीछे की ओर:",
+    "enter_the_word_to_be_displayed_on_the_back":"पीछे की ओर प्रदर्शित होने वाला शब्द दर्ज करें",
+    "back_memo":"पीठ पर नोट:",
+    "enter_the_word_to_be_displayed_on_the_back_memo":"पीछे की ओर प्रदर्शित होने वाला मेमो दर्ज करें",
+
+
+    "makeAndEditPage":"",
+
+    "create_and_edit":"बनाएं / संपादित करें",
+    "name":"नाम:",
+    "enter_the_memorization_card_name":"मेमोराइज़ेशन कार्ड का नाम दर्ज करें",
+    "saved_the_memorization_card":"सहेजा गया {memorization_card_name}.",
+    "@saved_the_memorization_card":{
+        "placeholders":{
+            "memorization_card_name":{}
+        }
+    },
+    "could_not_save":"सहेज नहीं सका।",
+    "you_need_at_least_one_non_blank_card":"आपको कम से कम एक गैर-रिक्त कार्ड की आवश्यकता है।",
+    "save_and_return":"सहेजें और वापस लौटें",
+
+
+    "myPage":"",
+
+    "my_page":"मेरा पेज",
+    "good":"〇",
+    "average":"△",
+    "poor":"✕",
+    "total_data":"कुल डेटा",
+    "learning_situation":"सीखने की स्थिति",
+
+
+    "playCard":"",
+
+    "enter_memo":"कृपया एक नोट दर्ज करें",
+
+
+    "playPage":"",
+
+    "learning_level":"सीखने का स्तर"
+
+}
