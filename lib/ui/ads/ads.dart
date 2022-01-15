@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-bool AD_TEST_FLAG=true;//本番時falseにすること
+bool AD_TEST_FLAG=false;//本番時falseにすること
 
 final BannerAd banner = BannerAd(
   adUnitId:AD_TEST_FLAG? 
